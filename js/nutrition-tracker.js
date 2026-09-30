@@ -84,9 +84,6 @@ function NutritionTracker() {
       </div>
 
       <header className="top" style={{ marginTop: '10px' }}>
-        <button className="theme-toggle-btn" onClick={toggleTheme}>
-          {theme === 'theme-simple' ? '🛡️ Medieval Theme' : '✨ Simple Theme'}
-        </button>
         <h1>Your Plan</h1>
         <p className="sub">Small, steady habits — tick them off as you go. Your progress saves on this device.</p>
       </header>

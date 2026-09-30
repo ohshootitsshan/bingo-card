@@ -15,8 +15,16 @@
 <link rel="stylesheet" href="css/nutrition-tracker.css" />
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
-<body>
+<body data-theme="simple">
+<label class="site-theme-picker-label">
+	<span class="visually-hidden">Site theme</span>
+	<select class="site-theme-picker" aria-label="Site theme">
+		<option value="simple">Theme: Simple</option>
+		<option value="medieval">Theme: Medieval</option>
+	</select>
+</label>
 <div id="root"></div>
+<script src="js/theme.js"></script>
 <script type="text/babel" src="js/nutrition-tracker.js"></script>
 </body>
 </html>

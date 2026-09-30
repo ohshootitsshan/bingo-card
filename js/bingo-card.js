@@ -4,8 +4,8 @@ const WORDS = [
   "Read", "Gratitude", "Shower", "Brush teeth", "Go outside",
   "Move my body", "Draw", "Journal", "Craft", "Cute outfit",
   "Skincare", "Meds", "2 bottles of water", "Tidy one thing", "Talk to someone",
-  "Meditate", "Eat a real meal", "Music", "Cook", "Game with Dan",
-  "Make bed", "Series or movie", "Paint nails", "Budgets", "8ish hours of sleep"
+  "Meditate", "Eat a real meal", "Future you task", "Cook", "Game with Dan",
+  "Make bed", "Series or movie", "Paint nails", "Before it gets worse task", "8ish hours of sleep"
 ];
 
 // Swap this out with any image URL (PNG, SVG, etc.) to change the marker.

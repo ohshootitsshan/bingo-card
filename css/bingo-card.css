@@ -38,7 +38,7 @@
   --font-family-main: "VT323", pixel;
 }
 
-[data-theme="ocean"] {
+[data-theme="simple"] {
   --page-start: #0f766e;
   --page-end: #67e8f9;
   --heading-color: #164e63;
@@ -53,25 +53,6 @@
   --free-bg: #ccfbf1;
   --free-border: #5eead4;
   --free-color: #115e59;
-  --font-family-head: inherit;
-  --font-family-main: inherit;
-}
-
-[data-theme="sunset"] {
-  --page-start: #f97316;
-  --page-end: #facc15;
-  --heading-color: #7c2d12;
-  --accent-color: #ea580c;
-  --accent-hover: #c2410c;
-  --letter-color: #c2410c;
-  --win-color: #be123c;
-  --cell-bg: #fff7ed;
-  --cell-hover: #ffedd5;
-  --cell-border: #fdba74;
-  --cell-font-color: #7c2d12;
-  --free-bg: #ffe4e6;
-  --free-border: #fda4af;
-  --free-color: #9f1239;
   --font-family-head: inherit;
   --font-family-main: inherit;
 }
@@ -249,3 +230,35 @@ a {
     text-shadow: 0 0 8px var(--win-color), 0 0 20px var(--win-color);
   }
 }
+
+  .site-theme-picker {
+  position: fixed;
+  left: 14px;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 200;
+  min-width: 150px;
+  padding: 8px 30px 8px 10px;
+  border: 1px solid var(--free-border);
+  border-radius: 6px;
+  outline: none;
+  background: var(--page-end);
+  color: var(--accent-color);
+  font: 600 12px var(--font-family-main);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .16);
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.site-theme-picker:focus-visible { outline: 2px solid var(--site-accent); outline-offset: 2px; }
+
