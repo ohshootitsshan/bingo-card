@@ -43,8 +43,6 @@ function BingoCard() {
   const [grid, setGrid] = useState(makeGrid);
   const [marked, setMarked] = useState(new Set([12]));
   const [markRotations, setMarkRotations] = useState(new Map([[12, randomAngle()]]));
-  // Change theme here
-  const [theme, setTheme] = useState("medieval");
 
   const hasBingo = checkBingo(marked);
 
@@ -71,7 +69,7 @@ function BingoCard() {
   }
 
   return (
-    <div className="bingo-page" data-theme={theme}>
+    <div className="bingo-page">
       <div className="bingo-wrapper">
         <div className="bingo-header">
           <h1 className={`bingo-title${hasBingo ? " is-bingo" : ""}`}>Bingo</h1>

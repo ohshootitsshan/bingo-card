@@ -11,20 +11,15 @@ const GOALS = [
 ];
 
 const STORE_KEY = 'kbTrackerData_v2';
-const THEME_KEY = 'kbTrackerTheme_v1';
 
 function NutritionTracker() {
   const [activeTab, setActiveTab] = useState('tracker');
   const [data, setData] = useState({});
-  const [theme, setTheme] = useState('theme-simple');
 
   useEffect(() => {
     try {
       const rawData = localStorage.getItem(STORE_KEY);
       if (rawData) setData(JSON.parse(rawData));
-
-      const savedTheme = localStorage.getItem(THEME_KEY);
-      if (savedTheme) setTheme(savedTheme);
     } catch (e) {}
   }, []);
 
@@ -32,14 +27,6 @@ function NutritionTracker() {
     setData(newData);
     try {
       localStorage.setItem(STORE_KEY, JSON.stringify(newData));
-    } catch (e) {}
-  };
-
-  const toggleTheme = () => {
-    const nextTheme = theme === 'theme-simple' ? 'theme-medieval' : 'theme-simple';
-    setTheme(nextTheme);
-    try {
-      localStorage.setItem(THEME_KEY, nextTheme);
     } catch (e) {}
   };
 
@@ -78,7 +65,7 @@ function NutritionTracker() {
   const VB = 260, CENTER = 130, OUTER_R = 118, STEP = 15, STROKE = 11;
 
   return (
-    <div className={theme} style={{ minHeight: '100vh', paddingBottom: '40px' }}>
+    <div style={{ minHeight: '100vh', paddingBottom: '40px' }}>
       <div style={{ padding: '15px 20px 0', maxWidth: '720px', margin: '0 auto' }}>
         <a href="index.html" style={{ color: 'inherit', textDecoration: 'none', fontWeight: 'bold' }}>&larr; Back to Dashboard</a>
       </div>

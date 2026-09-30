@@ -180,7 +180,7 @@ table.exch td:first-child { width: 34%; color: var(--ink-soft); white-space: now
 .exch-group { margin-bottom: 20px; }
 .exch-group:last-child { margin-bottom: 0; }
 .exch-group .gname { font-size: 14px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); font-weight: bold; margin-bottom: 4px; display: block; font-family: var(--font-body);}
-.exch-note { font-size: 15px; color: var(--ink-soft); margin-top： 14px; font-family： var(--font-body);}
+.exch-note { font-size: 15px; color: var(--ink-soft); margin-top: 14px; font-family: var(--font-body);}
 
 .step { display: flex; gap: 12px; margin-bottom: 10px; background: var(--card-soft); border: 2px solid var(--line); border-radius: var(--radius); padding: 12px 14px; box-shadow: 3px 3px 1px #00000053; }
 [data-theme="simple"] .step { box-shadow: none; border: 1px solid var(--line); }
@@ -208,12 +208,12 @@ table.exch td:first-child { width: 34%; color: var(--ink-soft); white-space: now
   z-index: 200;
   min-width: 150px;
   padding: 8px 30px 8px 10px;
-  border: 1px solid var(--free-border);
+  border: 1px solid var(--free-border, var(--line));
   border-radius: 6px;
   outline: none;
-  background: var(--page-end);
-  color: var(--accent-color);
-  font: 600 12px var(--font-family-main);
+  background: var(--page-end, var(--card));
+  color: var(--accent-color, var(--ink));
+  font: 600 12px var(--font-family-main, var(--font-body));
   box-shadow: 0 4px 16px rgba(0, 0, 0, .16);
   cursor: pointer;
 }
@@ -230,5 +230,5 @@ table.exch td:first-child { width: 34%; color: var(--ink-soft); white-space: now
   border: 0;
 }
 
-.site-theme-picker:focus-visible { outline: 2px solid var(--site-accent); outline-offset: 2px; }
+.site-theme-picker:focus-visible { outline: 2px solid var(--site-accent, var(--accent-color, var(--ink-soft))); outline-offset: 2px; }
 
