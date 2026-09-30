@@ -1,4 +1,24 @@
 :root {
+   --page-start: #1F0D51;
+  --page-end: #00635D;
+  --panel-bg: #BB4430;
+  --heading-color: #FFBF00;
+  --accent-color: #C6C013;
+  --accent-hover: #c2410c;
+  --letter-color: #C6C013;
+  --win-color: #FFBF00;
+  --cell-bg: #BB4430;
+  --cell-hover: #00635D;
+  --cell-border: #C6C013;
+  --cell-font-color: #FFBF00;
+  --free-bg: #00635D;
+  --free-border: #C6C013;
+  --free-color: #00635D;
+  --font-family-head: "Jacquard 12", cursive;
+  --font-family-main: "VT323", pixel;
+}
+
+[data-theme="purple"]{
   --page-start: #8b67ca;
   --page-end: #ccff00;
   --panel-bg: #ffffff;
@@ -14,8 +34,8 @@
   --free-bg: #e9d5ff;
   --free-border: #c084fc;
   --free-color: #6b21a8;
-  --font-family-head: inherit;
-  --font-family-main: inherit;
+  --font-family-head: "Jacquard 12", cursive;
+  --font-family-main: "VT323", pixel;
 }
 
 [data-theme="ocean"] {
@@ -78,6 +98,11 @@
 
 body {
   margin: 0;
+}
+
+a {
+  color: var(--heading-color);
+  font-family: var(--font-family-main);
 }
 
 .bingo-page {

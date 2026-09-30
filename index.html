@@ -1,20 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Bingo Card</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dashboard</title>
+<meta name="theme-color" content="#FAF7F1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=VT323&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/bingo-card.css" />
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<style>
+  body {
+    margin: 0;
+    background: var(--bg, #FAF7F1);
+    color: var(--ink, #2B2C22);
+    font-family: 'Karla', ui-sans-serif, system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .home-container {
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    background: var(--card-soft, #F7F2E7);
+    border: 1px solid var(--line, #E2D8C2);
+    border-radius: 22px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  }
+  h1 {
+    font-family: 'Newsreader', serif;
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0 0 8px 0;
+    color: var(--ink, #2B2C22);
+  }
+  p.subtitle {
+    color: var(--ink-soft, #63645A);
+    font-size: 15px;
+    margin: 0 0 32px 0;
+  }
+  .nav-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg, #FAF7F1);
+    border: 1px solid var(--line, #E2D8C2);
+    color: var(--ink, #2B2C22);
+    padding: 16px 20px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.2s ease;
+  }
+  .nav-btn:hover {
+    border-color: var(--ink, #2B2C22);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  .nav-btn span.desc {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink-soft, #63645A);
+    display: block;
+    margin-top: 2px;
+    text-align: left;
+  }
+  .nav-btn .arrow {
+    font-size: 18px;
+    color: var(--ink-soft, #63645A);
+  }
+  footer {
+    margin-top: 30px;
+    font-size: 12px;
+    color: var(--ink-soft, #63645A);
+  }
+</style>
 </head>
 <body>
-<div id="root"></div>
 
-<script type="text/babel" src="js/bingo-card.js"></script>
+<div class="home-container">
+  <h1>My Dashboard</h1>
+  <p class="subtitle">Choose a tracker or card to open</p>
+
+  <div class="nav-buttons">
+    <a href="nutrition.html" class="nav-btn">
+      <div>
+        🥗 Nutrition Tracker
+        <span class="desc">Daily habit rings &amp; wellness guides</span>
+      </div>
+      <div class="arrow">&rarr;</div>
+    </a>
+
+    <a href="bingo.html" class="nav-btn">
+      <div>
+        🏰 Medieval Bingo Card
+        <span class="desc">Weekly goals &amp; medieval theme</span>
+      </div>
+      <div class="arrow">&rarr;</div>
+    </a>
+  </div>
+</div>
+
+<footer>Saved locally on your device</footer>
+
 </body>
 </html>
