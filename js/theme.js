@@ -2,10 +2,11 @@
   'use strict';
 
   var themeStorageKey = 'bingoSiteTheme';
-  var themes = ['simple','medieval'];
+  var themes = ['simple','medieval', 'purple'];
   var themeLabels = {
     simple: 'Simple',
-    medieval: 'Medieval'
+    medieval: 'Medieval',
+    purple: 'Purple',
   };
 
   function applyTheme(nextTheme) {

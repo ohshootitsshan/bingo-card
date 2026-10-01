@@ -35,6 +35,26 @@ body[data-theme="simple"] {
   --font-family-head: "Jacquard 12", cursive;
   --font-family-main: "VT323", pixel;
  }
+
+  body[data-theme="purple"] {
+  --page-start: #CAA8F5;
+  --page-end: #CAA8F5;
+  --panel-bg: #5F4BB6;
+  --heading-color: #5F4BB6;
+  --accent-color: #5F4BB6;
+  --accent-hover: #cced29;
+  --letter-color: #4338ca;
+  --win-color: #9333ea;
+  --cell-bg: #eef2ff;
+  --cell-hover: #e0e7ff;
+  --cell-border: #c7d2fe;
+  --cell-font-color: #312e81;
+  --free-bg: #e9d5ff;
+  --free-border: #c084fc;
+  --free-color: #6b21a8;
+  --font-family-head: "EB Garamond", sans-serif;
+  --font-family-main: "DM Mono", monospace;
+ }
  /* Simple theme css */
 body {
     margin: 0;
@@ -49,9 +69,19 @@ body {
     padding: 20px;
     -webkit-font-smoothing: antialiased;
   }
+  .nav-bar {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-family-main);
+  color: var(--cell-font-color);
+  background-color: var(--panel-bg);
+  }
   .home-container {
     max-width: 480px;
     width: 100%;
+    box-sizing: border-box;
     text-align: center;
     background: var(--panel-bg);
     padding: 40px 30px;
@@ -144,6 +174,20 @@ body {
 }
 
 .site-theme-picker:focus-visible { outline: 2px solid var(--site-accent, var(--accent-color, var(--ink-soft))); outline-offset: 2px; }
+
+body[data-theme="purple"] .home-container,
+body[data-theme="purple"] .nav-btn,
+body[data-theme="purple"] .site-theme-picker {
+  background: rgba(255, 255, 255, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  box-shadow: 0 16px 40px rgba(49, 46, 129, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: blur(22px) saturate(155%);
+  backdrop-filter: blur(22px) saturate(155%);
+}
+
+body[data-theme="purple"] .nav-btn:hover {
+  background: rgba(255, 255, 255, 0.48);
+}
 
 /* Janky Medieval theme CSS */
 /*   body {

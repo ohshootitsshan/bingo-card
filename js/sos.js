@@ -100,6 +100,15 @@ const toolkitItems = [
         desc: "Set a tiny 10-minute timer if you need to focus or tackle one micro-task.",
         linkText: "Set a timer",
         linkUrl: "https://tomato-timer.com"
+    },
+    {
+        id: "overthinking_checklist",
+        category: "mind",
+        badge: "Calm & Focus",
+        title: "Overthinking Checklist",
+        desc: "Is something actually wrong, or do you just need to take care of yourself?",
+        linkText: "View Checklist",
+        linkUrl: "https://i.pinimg.com/1200x/1b/fe/c1/1bfec17835c917fdb4523b395b029515.jpg",
     }
 ];
 
@@ -193,16 +202,6 @@ function SOSToolkitApp() {
                 <p>Gentle tools, sounds, and reminders when brain power is running low.</p>
             </div>
 
-            {/* Baseline Checklist Banner */}
-            <div className="baseline-banner">
-                <h3>🌱 Quick Baseline Check (Before we dive in):</h3>
-                <ul className="baseline-list">
-                    <li><label><input type="checkbox" /> Drank a glass of water recently?</label></li>
-                    <li><label><input type="checkbox" /> Eaten something in the last 4 hours?</label></li>
-                    <li><label><input type="checkbox" /> Stood up / moved in the last hour?</label></li>
-                </ul>
-            </div>
-
             {/* Interactive Decision Tree Card */}
             <div className="sos-card tree-container" id="decision-tree">
                 <h2>Zero-Energy Decision Helper</h2>
@@ -268,7 +267,7 @@ function SOSToolkitApp() {
             <div className="sos-card wheel-image-section" id="feelings-wheel">
                 <h2>Feelings Wheel Reference</h2>
                 <p style={{ color: 'var(--text-muted)', marginBottom: '1rem', fontSize: '0.95rem' }}>
-                    A quiet visual reference to help pinpoint what emotion is present.
+                    A visual reference to help pinpoint what emotion is present.
                 </p>
                 <div className="wheel-image-container">
                     {/** 
@@ -276,10 +275,7 @@ function SOSToolkitApp() {
                       Save your feelings wheel image into your project's 'img/' folder 
                       (e.g., img/feelings-wheel.png) and update the src below!
                     */}
-                    <img src="img/feelings-wheel.png" alt="Feelings Wheel Reference" onerror="this.style.display='none'; document.getElementById('placeholder-text').style.display='block';" />
-                    <span id="placeholder-text" class="image-placeholder-text">
-                        🖼️ Image placeholder: Drop your feelings wheel image into your <code>img/</code> folder as <code>feelings-wheel.png</code>.
-                    </span>
+                    <img src="img/feelings-wheel.jpg" alt="Feelings Wheel Reference"/>
                 </div>
             </div>
         </div>

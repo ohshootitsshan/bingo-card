@@ -2,14 +2,14 @@
 <html lang="en" class="theme-medieval">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bingo Card</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=VT323&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Jacquard+12&family=Karla:ital,wght@0,200..800;1,200..800&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=VT323&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/bingo-card.css" />
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
@@ -19,11 +19,12 @@
 	<select class="site-theme-picker" aria-label="Site theme">
 		<option value="simple">Theme: Simple</option>
 		<option value="medieval">Theme: Medieval</option>
+		<option value="purple">Theme: Purple</option>
 	</select>
 </label>
 
 <!-- Optional navigation back to homepage or switch theme -->
-<div style="padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-body); background-color: var(--panel-bg);">
+<div class="nav-bar">
   <a href="index.html">&larr; Back to Dashboard</a>
 </div>
 

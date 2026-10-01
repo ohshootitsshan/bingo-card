@@ -10,6 +10,7 @@ const WORDS = [
 
 // Swap this out with any image URL (PNG, SVG, etc.) to change the marker.
 const MARK_IMAGE_URL = "img/gold-star.png"
+const STORAGE_KEY = "bingoCardState";
 
 function shuffle(arr) {
   const a = [...arr];
@@ -30,6 +31,38 @@ function randomAngle() {
   return Math.floor(Math.random() * 360);
 }
 
+function todayKey() {
+  const today = new Date();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  return `${today.getFullYear()}-${month}-${day}`;
+}
+
+function makeCardState() {
+  return {
+    date: todayKey(),
+    grid: makeGrid(),
+    marked: new Set([12]),
+    markRotations: new Map([[12, randomAngle()]])
+  };
+}
+
+function loadCardState() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (saved?.date === todayKey() && Array.isArray(saved.grid) && saved.grid.length === 25 &&
+        Array.isArray(saved.marked) && Array.isArray(saved.markRotations)) {
+      return {
+        date: saved.date,
+        grid: saved.grid,
+        marked: new Set(saved.marked),
+        markRotations: new Map(saved.markRotations)
+      };
+    }
+  } catch {}
+  return makeCardState();
+}
+
 function checkBingo(marked) {
   const lines = [];
   for (let r = 0; r < 5; r++) lines.push([0,1,2,3,4].map(c => r * 5 + c));
@@ -40,32 +73,40 @@ function checkBingo(marked) {
 }
 
 function BingoCard() {
-  const [grid, setGrid] = useState(makeGrid);
-  const [marked, setMarked] = useState(new Set([12]));
-  const [markRotations, setMarkRotations] = useState(new Map([[12, randomAngle()]]));
+  const [card, setCard] = useState(loadCardState);
+  const { grid, marked, markRotations } = card;
 
   const hasBingo = checkBingo(marked);
 
+  React.useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        date: card.date,
+        grid: card.grid,
+        marked: [...card.marked],
+        markRotations: [...card.markRotations]
+      }));
+    } catch {}
+  }, [card]);
+
   function toggle(i) {
     if (i === 12) return;
-    setMarked(prev => {
-      const next = new Set(prev);
-      if (next.has(i)) next.delete(i);
-      else next.add(i);
-      return next;
-    });
-    setMarkRotations(prev => {
-      const next = new Map(prev);
-      if (next.has(i)) next.delete(i);
-      else next.set(i, randomAngle());
-      return next;
+    setCard(prev => {
+      const nextMarked = new Set(prev.marked);
+      const nextRotations = new Map(prev.markRotations);
+      if (nextMarked.has(i)) {
+        nextMarked.delete(i);
+        nextRotations.delete(i);
+      } else {
+        nextMarked.add(i);
+        nextRotations.set(i, randomAngle());
+      }
+      return { ...prev, marked: nextMarked, markRotations: nextRotations };
     });
   }
 
   function reset() {
-    setGrid(makeGrid());
-    setMarked(new Set([12]));
-    setMarkRotations(new Map([[12, randomAngle()]]));
+    setCard(makeCardState());
   }
 
   return (

@@ -51,6 +51,20 @@
   --font-body: 'VT323', pixel;
 }
 
+[data-theme="purple"] {
+  --page-start: #8b67ca;
+  --page-end: #ccff00;
+  --card: rgba(255, 255, 255, 0.34);
+  --card-soft: rgba(238, 242, 255, 0.48);
+  --ink: #312e81;
+  --ink-soft: #4f46e5;
+  --line: rgba(255, 255, 255, 0.66);
+  --ring-track: #e9d5ff;
+  --radius: 18px;
+  --font-heading: 'EB Garamond', Georgia, serif;
+  --font-body: 'DM Mono', monospace;
+}
+
 /* Base resets & theme application */
 * { box-sizing: border-box; }
 body {
@@ -68,6 +82,11 @@ body {
 }
 [data-theme="medieval"] {
   background: linear-gradient(to bottom right, var(--page-start) 0%, var(--page-end) 100%);
+  color: var(--ink);
+  min-height: 100vh;
+}
+[data-theme="purple"] {
+  background: linear-gradient(135deg, var(--page-start), #a98bdd 48%, var(--page-end) 145%);
   color: var(--ink);
   min-height: 100vh;
 }
@@ -197,8 +216,14 @@ table.exch td:first-child { width: 34%; color: var(--ink-soft); white-space: now
 [data-theme="simple"] .footnote { color: var(--ink-soft); font-weight: normal; }
 
 @media (max-width: 480px) {
-  .ring-card { flex-direction: column; text-align: center; }
-  .legend { width: 100%; }
+  .ring-card { flex-direction: row; flex-wrap: nowrap; gap: 10px; padding: 12px; text-align: left; }
+  .ring-visual { width: clamp(92px, 32vw, 140px); height: auto; aspect-ratio: 1; }
+  .legend { flex: 1; width: auto; min-width: 0; gap: 6px; }
+  .legend .row { gap: 6px; font-size: 14px; }
+  [data-theme="simple"] .legend .row { gap: 6px; font-size: 13px; }
+  .legend .name { min-width: 0; }
+  .checklist .box { width: 20px; height: 20px; }
+  .checklist .box svg { width: 12px; height: 12px; }
 }
 
   .site-theme-picker {
@@ -231,4 +256,23 @@ table.exch td:first-child { width: 34%; color: var(--ink-soft); white-space: now
 }
 
 .site-theme-picker:focus-visible { outline: 2px solid var(--site-accent, var(--accent-color, var(--ink-soft))); outline-offset: 2px; }
+
+[data-theme="purple"] nav.tabs,
+[data-theme="purple"] .panel,
+[data-theme="purple"] .ring-card,
+[data-theme="purple"] .checklist li,
+[data-theme="purple"] .step,
+[data-theme="purple"] .supp,
+[data-theme="purple"] .pill-list li,
+[data-theme="purple"] .site-theme-picker {
+  background-color: rgba(255, 255, 255, 0.32);
+  border-color: rgba(255, 255, 255, 0.64);
+  box-shadow: 0 14px 32px rgba(49, 46, 129, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(20px) saturate(155%);
+  backdrop-filter: blur(20px) saturate(155%);
+}
+
+[data-theme="purple"] .checklist li.done {
+  background-color: rgba(233, 213, 255, 0.72);
+}
 

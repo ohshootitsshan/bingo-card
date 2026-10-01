@@ -39,6 +39,23 @@ body[data-theme="medieval"] {
     --btn-hover: #C6C013;
 }
 
+body[data-theme="purple"] {
+    --font-body: 'DM Mono', monospace;
+    --font-heading: 'EB Garamond', Georgia, serif;
+    --page-start: #8b67ca;
+    --page-end: #ccff00;
+    --card-bg: rgba(255, 255, 255, 0.34);
+    --panel-bg: rgba(255, 255, 255, 0.28);
+    --card-border: rgba(255, 255, 255, 0.66);
+    --ink: #312e81;
+    --text-color: #312e81;
+    --text-muted: #4f46e5;
+    --heading-color: #4f46e5;
+    --accent-color: #9333ea;
+    --btn-bg: rgba(238, 242, 255, 0.48);
+    --btn-hover: rgba(224, 231, 255, 0.78);
+}
+
 /* --------------------------------------------------------------------------
    2. Base Reset & Page Layout
    -------------------------------------------------------------------------- */
@@ -308,119 +325,106 @@ button.choice-btn:hover, .action-btn:hover, .secondary-btn:hover {
     white-space: nowrap;
     border: 0;
 }
+.wheel-image-container img {
+    max-width: 100%;
+    height: auto;
+}
 /* ==========================================================================
-   Radial Feelings Wheel Styles (Circular Layout at Bottom)
+   Popup Modal Styles
    ========================================================================== */
-.wheel-section {
+
+/* Background overlay */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* Modal dialog box */
+.modal-box {
+    background: var(--card-bg, #FFFFFF);
+    border: 2px solid var(--card-border, #2B2C22);
+    border-radius: 18px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: scaleUp 0.2s ease-out;
+    font-family: var(--font-body);
+    color: var(--text-color);
+}
+
+.modal-box h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--heading-color);
+    margin-bottom: 0.75rem;
+}
+
+.modal-box p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+/* Close button inside modal */
+.modal-close-btn {
+    background: var(--btn-bg);
+    border: 2px solid var(--card-border);
+    color: var(--text-color);
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: block;
+    width: 100%;
     text-align: center;
 }
 
-.wheel-wrapper {
-    position: relative;
-    width: 320px;
-    height: 320px;
-    margin: 2rem auto;
-    border-radius: 50%;
-    border: 3px dashed var(--card-border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--panel-bg);
-}
-
-.wheel-center {
-    width: 110px;
-    height: 110px;
-    background: var(--card-bg);
-    border: 2px solid var(--card-border);
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    padding: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.wheel-center h4 {
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    color: var(--heading-color);
-    margin-bottom: 2px;
-}
-
-.wheel-center p {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-}
-
-.wheel-node {
-    position: absolute;
-    width: 85px;
-    height: 85px;
-    background: var(--card-bg);
-    border: 2px solid var(--card-border);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-color);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.wheel-node:hover, .wheel-node.active {
-    background: var(--heading-color);
+.modal-close-btn:hover {
+    background: var(--btn-hover);
     color: var(--card-bg);
-    border-color: var(--heading-color);
-    transform: scale(1.1);
-    z-index: 3;
 }
 
-/* Positioning 6 core emotions radially around the 320px circle */
-.wheel-node:nth-child(1) { top: 10px; left: 117px; }   /* Joy (Top) */
-.wheel-node:nth-child(2) { top: 75px; right: 20px; }   /* Surprised (Top Right) */
-.wheel-node:nth-child(3) { bottom: 75px; right: 20px; }/* Angry (Bottom Right) */
-.wheel-node:nth-child(4) { bottom: 10px; left: 117px; }/* Sad (Bottom) */
-.wheel-node:nth-child(5) { bottom: 75px; left: 20px; } /* Fearful (Bottom Left) */
-.wheel-node:nth-child(6) { top: 75px; left: 20px; }    /* Disgusted (Top Left) */
-
-.wheel-sub-display {
-    background: var(--card-bg);
-    border: 2px solid var(--card-border);
-    border-radius: 14px;
-    padding: 1.5rem;
-    margin-top: 1.5rem;
-    text-align: left;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.wheel-sub-display h4 {
-    font-family: var(--font-heading);
-    color: var(--heading-color);
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
+@keyframes scaleUp {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
-.sub-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 0.75rem;
+body[data-theme="purple"] {
+    background: linear-gradient(135deg, var(--page-start), #a98bdd 48%, var(--page-end) 145%);
 }
 
-.sub-chip {
-    background: var(--panel-bg);
-    border: 1px solid var(--card-border);
-    padding: 0.4rem 0.9rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    color: var(--text-color);
-    font-family: var(--font-body);
-    font-weight: 500;
+body[data-theme="purple"] .sos-card,
+body[data-theme="purple"] .baseline-banner,
+body[data-theme="purple"] .recommendation-box,
+body[data-theme="purple"] .toolkit-item,
+body[data-theme="purple"] .modal-box,
+body[data-theme="purple"] button.choice-btn,
+body[data-theme="purple"] .action-btn,
+body[data-theme="purple"] .secondary-btn,
+body[data-theme="purple"] .site-theme-picker {
+    background-color: rgba(255, 255, 255, 0.32);
+    border-color: rgba(255, 255, 255, 0.66);
+    box-shadow: 0 14px 32px rgba(49, 46, 129, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    -webkit-backdrop-filter: blur(20px) saturate(155%);
+    backdrop-filter: blur(20px) saturate(155%);
 }
