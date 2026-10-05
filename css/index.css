@@ -42,13 +42,13 @@ body[data-theme="simple"] {
   --panel-bg: #5F4BB6;
   --heading-color: #5F4BB6;
   --accent-color: #5F4BB6;
-  --accent-hover: #cced29;
-  --letter-color: #4338ca;
+  --accent-hover: #B6C649;
+  --letter-color: #F0EDE8;
   --win-color: #9333ea;
-  --cell-bg: #eef2ff;
-  --cell-hover: #e0e7ff;
-  --cell-border: #c7d2fe;
-  --cell-font-color: #312e81;
+  --cell-bg: #5F4BB6;
+  --cell-hover: #B6C649;
+  --cell-border: #5F4BB6;
+  --cell-font-color: #CAA8F5;
   --free-bg: #e9d5ff;
   --free-border: #c084fc;
   --free-color: #6b21a8;
@@ -175,20 +175,45 @@ body {
 
 .site-theme-picker:focus-visible { outline: 2px solid var(--site-accent, var(--accent-color, var(--ink-soft))); outline-offset: 2px; }
 
-body[data-theme="purple"] .home-container,
-body[data-theme="purple"] .nav-btn,
+body[data-theme="purple"] .nav-btn {
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--accent-hover);
+  border: 0.2px solid rgba(255, 255, 255, 0.02);
+  box-shadow: 0 16px 40px rgba(49, 46, 129, 0.18), inset 0 0.2px 0 rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(22px);
+}
+
+body[data-theme="purple"] .nav-btn span.desc,
+body[data-theme="purple"] .nav-btn .arrow {
+  color: var(--cell-font-color);
+}
+
 body[data-theme="purple"] .site-theme-picker {
   background: rgba(255, 255, 255, 0.32);
-  border: 1px solid rgba(255, 255, 255, 0.62);
-  box-shadow: 0 16px 40px rgba(49, 46, 129, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.72);
-  -webkit-backdrop-filter: blur(22px) saturate(155%);
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  box-shadow: 0 16px 40px rgba(49, 46, 129, 0.18), inset 0 0.2px 0 rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(22px) saturate(155%);
 }
-
-body[data-theme="purple"] .nav-btn:hover {
-  background: rgba(255, 255, 255, 0.48);
+body[data-theme="purple"] .home-container{
+  background: var(--panel-bg);
+  border: 0.2px solid rgba(255, 255, 255, 0.02);
+  box-shadow: 0 16px 40px rgba(49, 46, 129, 0.18), inset 0 0.2px 0 rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(22px);
 }
 
+body[data-theme="purple"] .home-container h1,
+body[data-theme="purple"] .home-container p.subtitle {
+  color: var(--cell-font-color);
+}
+
+body[data-theme="purple"] .nav-btn:hover{
+  background: var(--cell-hover);
+  box-shadow: 0 0 7px 4px rgba(220, 254, 0, 0.386);
+  color: var(--heading-color);
+}
+body[data-theme="purple"] .nav-btn:hover span.desc {
+  color: var(--heading-color);
+}
 /* Janky Medieval theme CSS */
 /*   body {
     font-family: var(--font-body);

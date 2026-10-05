@@ -4,7 +4,7 @@ const GOALS = [
   { id: 'movement',     name: 'Movement ',     hint: '5,000 steps or other movement',       color: 'var(--c-movement)' },
   { id: 'hydration',    name: 'Hydration ',    hint: '2 bottles of water',                  color: 'var(--c-hydration)' },
   { id: 'protein',      name: 'Protein ',      hint: 'Protein at each meal',                color: 'var(--c-protein)' },
-  { id: 'fibre',        name: 'Fibre ',        hint: 'High-fibre foods + psyllium',         color: 'var(--c-fibre)' },
+  { id: 'fibre',        name: 'Fibre ',        hint: 'High-fibre foods + psyllium husk',         color: 'var(--c-fibre)' },
   { id: 'supplements',  name: 'Supplements ',  hint: 'Vitamin D, Ferrovance, Creatine',     color: 'var(--c-supplements)' },
   { id: 'sleep',        name: 'Sleep ',        hint: 'Restful, consistent sleep',           color: 'var(--c-sleep)' },
   { id: 'mindfulness',  name: 'Mindfulness ',  hint: 'A moment for yourself',               color: 'var(--c-mindfulness)' }

@@ -52,17 +52,25 @@
 }
 
 [data-theme="purple"] {
-  --page-start: #8b67ca;
-  --page-end: #ccff00;
-  --card: rgba(255, 255, 255, 0.34);
-  --card-soft: rgba(238, 242, 255, 0.48);
-  --ink: #312e81;
-  --ink-soft: #4f46e5;
-  --line: rgba(255, 255, 255, 0.66);
-  --ring-track: #e9d5ff;
-  --radius: 18px;
+  --page-start: #CAA8F5;
+  --page-end: #CAA8F5;
+  --card: #5F4BB6;
+  --card-soft: #B6C649;
+  --ink: #e9d5ff;
+  --ink-soft: #B6C649;
+  --line: rgba(255, 255, 255, 0.06);
+  --ring-track: #CAA8F5;
+  --radius: 8px;
   --font-heading: 'EB Garamond', Georgia, serif;
   --font-body: 'DM Mono', monospace;
+
+  --c-movement: #4e9090;
+  --c-hydration: #2741a1;
+  --c-protein: #c353b6;
+  --c-fibre: #B6C649;
+  --c-supplements: #8863c1;
+  --c-sleep: #43aa8b;
+  --c-mindfulness: #bb2b7f;
 }
 
 /* Base resets & theme application */
@@ -129,11 +137,12 @@ nav.tabs button {
   flex: 0 0 auto; font-family: var(--font-body); font-size: 18px;
   color: var(--ink); background: var(--card-soft); border: 2px solid var(--line);
   padding: 6px 14px; border-radius: var(--radius); white-space: nowrap; cursor: pointer;
-  box-shadow: 3px 3px 1px #00000053;
+  box-shadow: 2px 2px 1px #00000053;
 }
 [data-theme="simple"] nav.tabs button { font-size: 16px; padding: 6px 12px; }
-nav.tabs button:hover { color: var(--ink); background: var(--card); }
-nav.tabs button[aria-selected="true"] { background: var(--ink); color: var(--card); border-color: var(--ink); box-shadow: none; }
+[data-theme="medieval"] nav.tabs button[aria-selected="true"] { background: var(--line); color: var(--ring-track); box-shadow: none; border-color: var(--ring-track); }
+nav.tabs button:hover { color: var(--ink); background: var(--card-soft); transform: scale(1.02);  box-shadow: 4px 4px 1px #00000053; transition: background-color 200ms, transform 200ms, color 200ms, box-shadow 200ms, border-color 200ms; }
+nav.tabs button[aria-selected="true"] { background: var(--line); color: var(--ink); box-shadow: none; }
 
 .panel { display: none; padding: 32px 0; background: var(--card); margin-top: 20px; padding: 24px; border: 2px solid var(--line); border-radius: var(--radius); box-shadow: 5px 5px 0px rgba(0,0,0,0.2); }
 [data-theme="simple"] .panel { background: transparent; border: none; box-shadow: none; padding: 32px 0; }
@@ -168,8 +177,8 @@ nav.tabs button[aria-selected="true"] { background: var(--ink); color: var(--car
   transition: transform .1s ease;
 }
 [data-theme="simple"] .checklist li { box-shadow: none; border: 1px solid var(--line); }
-.checklist li:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 2px #00000053; }
-[data-theme="simple"] .checklist li:hover { transform: none; border-color: var(--ink-soft); }
+.checklist li:hover { transform: translate(-2px, -2px); box-shadow: 2px 2px 5px #00000053; }
+[data-theme="simple"] .checklist li:hover { transform: scale(1.01); }
 .checklist li.done { background: var(--ring-track); }
 .checklist .box {
   flex: 0 0 auto; width: 24px; height: 24px; border-radius: 4px; border: 2px solid var(--line);
@@ -258,21 +267,84 @@ table.exch td:first-child { width: 34%; color: var(--ink-soft); white-space: now
 .site-theme-picker:focus-visible { outline: 2px solid var(--site-accent, var(--accent-color, var(--ink-soft))); outline-offset: 2px; }
 
 [data-theme="purple"] nav.tabs,
-[data-theme="purple"] .panel,
-[data-theme="purple"] .ring-card,
-[data-theme="purple"] .checklist li,
 [data-theme="purple"] .step,
 [data-theme="purple"] .supp,
 [data-theme="purple"] .pill-list li,
 [data-theme="purple"] .site-theme-picker {
   background-color: rgba(255, 255, 255, 0.32);
-  border-color: rgba(255, 255, 255, 0.64);
+  border: none;
   box-shadow: 0 14px 32px rgba(49, 46, 129, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.7);
   -webkit-backdrop-filter: blur(20px) saturate(155%);
   backdrop-filter: blur(20px) saturate(155%);
 }
-
+[data-theme="purple"] .panel {
+  background-color: var(--card);
+  box-shadow: 0 14px 32px rgba(49, 46, 129, 0.15), inset 0 0.2px 1px rgba(255, 255, 255, 0.7);
+  border: none;
+  color: var(--ink);
+}
+[data-theme="purple"] .ring-card {
+  background-color: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 14px 32px rgba(49, 46, 129, 0.15), inset 0 0.2px 1px rgba(255, 255, 255, 0.7);
+  border: none;
+  color: var(--ink);
+}
+[data-theme="purple"] .checklist li {
+  background-color: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 14px 32px rgba(49, 46, 129, 0.15), inset 0 0.2px 1px rgba(255, 255, 255, 0.7);
+  border: none;
+  color: var(--ink);
+}
+[data-theme="purple"] nav.tabs button{
+  background-color: var(--card);
+  box-shadow: 0 14px 32px rgba(49, 46, 129, 0.15), inset 0 0.2px 1px rgba(255, 255, 255, 0.7);
+  border: none;
+  color: var(--ink);
+}
+[data-theme="purple"] nav.tabs button[aria-selected="true"]{
+  background-color: var(--ink);
+  color: var(--card);
+}
+[data-theme="purple"] nav.tabs button:hover{
+  background: var(--card-soft);
+  border: none;
+  color: var(--card);
+  box-shadow: 0 0 7px 4px rgba(220, 254, 0, 0.386);
+  transform: scale(1.02);
+  transition: background-color 200ms, transform 200ms, color 200ms, box-shadow 200ms, border-color 200ms;
+}
 [data-theme="purple"] .checklist li.done {
-  background-color: rgba(233, 213, 255, 0.72);
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 12px 28px rgba(49, 46, 129, 0.16), inset 0 0.4px 0 rgba(0, 0, 0, 0.2);
+}
+[data-theme="purple"] p.footnote {
+  color: var(--card);
+}
+
+[data-theme="purple"] #tracker-root .theme-toggle-btn {
+  position: absolute; top: 20px; right: 20px;
+  background: var(--card-soft); border: 2px solid var(--line);
+  padding: 6px 12px; border-radius: var(--radius); font-size: 14px;
+  font-family: var(--font-body); font-weight: bold; cursor: pointer; color: var(--ink);
+  box-shadow: 0 14px 32px rgba(49, 46, 129, 0.15);
+}
+
+[data-theme="purple"] #tracker-root input:not([type="checkbox"]),
+[data-theme="purple"] #tracker-root select,
+[data-theme="purple"] #tracker-root textarea {
+  background: rgba(255, 255, 255, 0.32) !important;
+  border: none !important;
+  color: var(--card) !important;
+}
+[data-theme="purple"] #tracker-root .food-ingredients,
+[data-theme="purple"] #tracker-root .food-log-entry {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border: none !important;
+  box-shadow: 0 14px 32px rgba(49, 46, 129, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.07) !important;
+}
+[data-theme="purple"] #tracker-root .entry-type-button:not(.is-active) {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border: none !important;
+  color: var(--ink) !important;
 }
 

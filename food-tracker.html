@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nutrition Tracker</title>
+<title>Food & Symptoms Tracker</title>
 <meta name="theme-color" content="#FAF7F1">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
@@ -12,20 +12,38 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=VT323&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/nutrition-tracker.css" />
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 <body data-theme="simple">
+
+<!-- Theme Picker -->
 <label class="site-theme-picker-label">
 	<span class="visually-hidden">Site theme</span>
 	<select class="site-theme-picker" aria-label="Site theme">
 		<option value="simple">Theme: Simple</option>
 		<option value="medieval">Theme: Medieval</option>
-		<option value="purple">Theme: Purple</option>
+    <option value="purple">Theme: Purple</option>
 	</select>
 </label>
-<div id="root"></div>
+
+<!-- Navigation -->
+<div style="padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-body); background-color: var(--card); border-bottom: 1px solid var(--line);">
+  <a href="index.html" style="text-decoration: none; font-weight: 600;">&larr; Back to Dashboard</a>
+</div>
+
+<div class="wrap" style="margin-top: 2rem;">
+  <header class="top" style="border-radius: var(--radius); margin-bottom: 2rem;">
+    <div class="brand">Wellness Journal</div>
+    <h1>Food & Symptom Tracker</h1>
+    <p class="sub">Log meals and symptoms to track patterns over time. Saved locally on your device.</p>
+  </header>
+
+  <div id="tracker-root"></div>
+</div>
+
 <script src="js/theme.js"></script>
-<script type="text/babel" src="js/nutrition-tracker.js"></script>
+<script type="text/babel" src="js/food-tracker.js"></script>
 </body>
 </html>
