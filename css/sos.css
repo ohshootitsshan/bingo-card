@@ -8,18 +8,18 @@
 body[data-theme="simple"] {
     --font-body: 'Karla', ui-sans-serif, system-ui, sans-serif;
     --font-heading: 'Newsreader', ui-serif, Georgia, serif;
-    --page-start: #FAF8F5;
-    --page-end: #EFECE6;
-    --card-bg: #FFFFFF;
-    --panel-bg: #F4F1EA;
-    --card-border: rgba(43, 44, 34, 0.15);
+    --page-start: #FAF7F1;
+    --page-end: #FAF7F1;
+    --card-bg: #F1EAD9;
+    --panel-bg: #F7F2E7;
+    --card-border: #E2D8C2;
     --ink: #2B2C22;
     --text-color: #2B2C22;
-    --text-muted: #6B6D58;
-    --heading-color: #c2b69c;
-    --accent-color: #8DA9C4;
-    --btn-bg: #F4F1EA;
-    --btn-hover: #8DA9C4;
+    --text-muted: #63645A;
+    --heading-color: #2B2C22;
+    --accent-color: #E2D8C2;
+    --btn-bg: #F7F2E7;
+    --btn-hover: #F7F2E7;
 }
 
 body[data-theme="medieval"] {
@@ -73,6 +73,28 @@ body {
     min-height: 100vh;
 }
 
+.sos-page-nav {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-body);
+    background-color: var(--panel-bg);
+    border-bottom: 1px solid var(--card-border, rgba(0, 0, 0, 0.1));
+}
+
+.sos-page-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.sos-page-nav span {
+    font-size: 0.9rem;
+    color: var(--text-muted, #666);
+}
+
 .sos-container {
     max-width: 800px;
     margin: 2rem auto;
@@ -95,6 +117,34 @@ body {
     color: var(--text-muted);
     font-size: 1.1rem;
     font-family: var(--font-body);
+}
+
+@media (max-width: 480px) {
+    .site-theme-picker-label {
+        display: block;
+        padding: 8px 14px;
+    }
+
+    .site-theme-picker {
+        position: static;
+        display: block;
+    }
+
+    .sos-page-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding: 10px 16px;
+    }
+
+    .sos-page-nav a,
+    .sos-page-nav span {
+        font-size: 14px;
+    }
+
+    .sos-header h1 {
+        font-size: 2.25rem;
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -551,6 +601,33 @@ body[data-theme="purple"] .dopa-card {
     height: 352px;
 }
 
+.item-detail-fallback {
+    margin: 1rem 0 1.5rem;
+    padding: 1rem;
+    border-left: 4px solid var(--accent-color);
+    border-radius: 0 8px 8px 0;
+    background: var(--panel-bg);
+}
+
+.item-detail-fallback p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.item-detail-fallback-label {
+    margin-bottom: 0.35rem !important;
+    font-weight: 700;
+}
+
+.item-detail-fallback img {
+    display: block;
+    max-width: 100%;
+    max-height: 50vh;
+    height: auto;
+    margin: 0.75rem auto 0;
+    object-fit: contain;
+}
+
 .item-detail-actions {
     display: flex;
     flex-wrap: wrap;
@@ -671,6 +748,13 @@ body[data-theme="purple"] .filter-btn:hover {
   color: var(--card-bg);
   box-shadow: 0 0 7px 4px rgba(220, 254, 0, 0.386);
   transition: background-color 200ms, transform 200ms, color 200ms, box-shadow 200ms, border-color 200ms;
+}
+
+body[data-theme="purple"] button.choice-btn,
+body[data-theme="purple"] .action-btn,
+body[data-theme="purple"] .secondary-btn,
+body[data-theme="purple"] .filter-btn {
+    color: var(--card-bg) !important;
 }
 
 body[data-theme="purple"] .sos-header p {

@@ -56,6 +56,11 @@ body[data-theme="simple"] {
   --font-family-main: "DM Mono", monospace;
  }
  /* Simple theme css */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
     margin: 0;
     background: linear-gradient(to bottom, var(--page-start), var(--page-end));
@@ -64,6 +69,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    box-sizing: border-box;
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -214,6 +220,55 @@ body[data-theme="purple"] .nav-btn:hover{
 body[data-theme="purple"] .nav-btn:hover span.desc {
   color: var(--heading-color);
 }
+
+@media (max-width: 380px) {
+  body {
+    min-height: 100svh;
+    justify-content: flex-start;
+    padding: max(12px, env(safe-area-inset-top)) 14px calc(64px + env(safe-area-inset-bottom));
+  }
+
+  .home-container {
+    padding: 24px 18px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  p.subtitle {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .nav-buttons {
+    gap: 10px;
+  }
+
+  .nav-btn {
+    gap: 8px;
+    padding: 13px 14px;
+    font-size: 15px;
+  }
+
+  .nav-btn > div:first-child {
+    min-width: 0;
+  }
+
+  .nav-btn .arrow {
+    flex: 0 0 auto;
+  }
+
+  .nav-btn span.desc {
+    font-size: 12px;
+  }
+
+  footer {
+    margin-top: 18px;
+  }
+}
+
 /* Janky Medieval theme CSS */
 /*   body {
     font-family: var(--font-body);

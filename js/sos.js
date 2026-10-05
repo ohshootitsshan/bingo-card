@@ -52,12 +52,10 @@ const toolkitItems = [
         badge: "Audio & Sounds",
         title: "Soundbath Meditation",
         desc: "Put on headphones and let ambient tones or singing bowls soothe a racing mind.",
-        linkText: "Listen on YouTube",
-        linkUrl: "https://www.youtube.com/watch?v=QKNW0dNsxTo",
+        linkText: "Listen on Headspace",
+        linkUrl: "https://hdsp.co/share/69a710145e41966c0fc731ce",
         details: "Settle somewhere comfortable, choose a gentle volume, and let the sound be background rather than something you need to concentrate on.",
-        embedUrl: "https://www.youtube-nocookie.com/embed/QKNW0dNsxTo",
-        embedTitle: "20 minute Sound Bath & Guided Meditation",
-        embedType: "youtube"
+        imageUrl: "https://braveparenting.net/wp-content/uploads/2025/01/headspace-app-logo.png"
     },
     {
         id: "breathwork",
@@ -74,16 +72,16 @@ const toolkitItems = [
         embedType: "youtube"
     },
     {
-        id: "album",
+        id: "playlist",
         category: "audio",
         badge: "Audio & Sounds",
-        title: "Comfort Album / Lo-Fi",
-        desc: "Put on your safe, familiar comfort album or instrumental background music.",
+        title: "Comfort Playlist",
+        desc: "Put on your comfort playlist.",
         linkText: "Open Spotify playlist",
-        linkUrl: "https://open.spotify.com/playlist/37i9dQZF1DWWQRwui0ExPn",
-        details: "Play a mellow instrumental mix, or use the link below to find music that feels familiar.",
-        embedUrl: "https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn",
-        embedTitle: "Spotify Lo-Fi Beats playlist",
+        linkUrl: "https://open.spotify.com/playlist/4ZnbdLJiAMVwxMs3R2XRH8?si=1f55c2dba90640be",
+        details: "Listen to your comfort playlist.",
+        embedUrl: "https://open.spotify.com/embed/playlist/4ZnbdLJiAMVwxMs3R2XRH8?utm_source=generator&si=4f1917aeb4f147ca",
+        embedTitle: "Deep Breaths Playlist",
         embedType: "spotify"
     },
     {
@@ -121,7 +119,7 @@ const toolkitItems = [
     },
     {
         id: "focus_timer",
-        category: "mind",
+        category: "focus",
         badge: "Calm & Focus",
         title: "Pomodoro / Timer Reset",
         desc: "Set a tiny 10-minute timer if you need to focus or tackle one micro-task.",
@@ -138,10 +136,9 @@ const toolkitItems = [
         desc: "Is something actually wrong, or do you just need to take care of yourself?",
         linkText: "View Checklist",
         linkUrl: "https://i.pinimg.com/1200x/1b/fe/c1/1bfec17835c917fdb4523b395b029515.jpg",
-        details: "Use this visual prompt to separate what you know from what worry is adding.",
+        details: "Is something actually wrong, or do you just need to take care of yourself?",
         imageUrl: "https://i.pinimg.com/1200x/1b/fe/c1/1bfec17835c917fdb4523b395b029515.jpg",
         imageAlt: "Overthinking checklist",
-        steps: ["What do I know for sure right now?", "What am I assuming or predicting?", "What is one kind, practical next step I can take?"]
     }
 ];
 
@@ -503,10 +500,22 @@ function SOSToolkitApp() {
                                 ></iframe>
                             </div>
                         )}
+                        {(selectedItem.embedFallbackText || selectedItem.embedFallbackImageUrl) && (
+                            <div className="item-detail-fallback">
+                                <p className="item-detail-fallback-label">If the embed is unavailable</p>
+                                {selectedItem.embedFallbackText && <p>{selectedItem.embedFallbackText}</p>}
+                                {selectedItem.embedFallbackImageUrl && (
+                                    <img
+                                        src={selectedItem.embedFallbackImageUrl}
+                                        alt={selectedItem.embedFallbackImageAlt || `Visual fallback for ${selectedItem.title}`}
+                                    />
+                                )}
+                            </div>
+                        )}
                         <div className="item-detail-actions">
                             {selectedItem.linkUrl && selectedItem.linkUrl.startsWith('http') && (
                                 <a className="primary-link-btn" href={selectedItem.linkUrl} target="_blank" rel="noopener noreferrer">
-                                    {selectedItem.imageUrl ? 'Open image' : selectedItem.linkText}
+                                    {selectedItem.imageUrl ? 'Open link' : selectedItem.linkText}
                                 </a>
                             )}
                             <button type="button" className="secondary-btn" onClick={() => setSelectedItem(null)}>Close</button>

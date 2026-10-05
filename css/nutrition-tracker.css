@@ -1,3 +1,8 @@
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 /* ==========================================
    1. SIMPLE THEME (Default Nutrition Tracker)
    ========================================== */
@@ -81,6 +86,7 @@ body {
   font-family: var(--font-body);
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
+  background: linear-gradient(to bottom, var(--page-start), var(--page-end));
 }
 
 /* Apply theme variables to wrapper */
@@ -225,6 +231,16 @@ table.exch td:first-child { width: 34%; color: var(--ink-soft); white-space: now
 [data-theme="simple"] .footnote { color: var(--ink-soft); font-weight: normal; }
 
 @media (max-width: 480px) {
+  .site-theme-picker-label {
+    display: block;
+    padding: 8px 14px;
+  }
+
+  .site-theme-picker {
+    position: static;
+    display: block;
+  }
+
   .ring-card { flex-direction: row; flex-wrap: nowrap; gap: 10px; padding: 12px; text-align: left; }
   .ring-visual { width: clamp(92px, 32vw, 140px); height: auto; aspect-ratio: 1; }
   .legend { flex: 1; width: auto; min-width: 0; gap: 6px; }
@@ -233,6 +249,29 @@ table.exch td:first-child { width: 34%; color: var(--ink-soft); white-space: now
   .legend .name { min-width: 0; }
   .checklist .box { width: 20px; height: 20px; }
   .checklist .box svg { width: 12px; height: 12px; }
+
+  .wrap > header.top {
+    padding: 20px 14px 16px;
+  }
+
+  .wrap > header.top h1 {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 360px) {
+  .ring-visual {
+    width: clamp(88px, 28vw, 104px);
+  }
+
+  .legend .row,
+  [data-theme="simple"] .legend .row {
+    font-size: 12px;
+  }
+
+  [data-theme="purple"] .legend .row {
+    font-size: 11px;
+  }
 }
 
   .site-theme-picker {
@@ -346,5 +385,12 @@ table.exch td:first-child { width: 34%; color: var(--ink-soft); white-space: now
   background: rgba(255, 255, 255, 0.22) !important;
   border: none !important;
   color: var(--ink) !important;
+}
+
+@media (max-width: 480px) {
+  .site-theme-picker {
+    position: static;
+    display: block;
+  }
 }
 
