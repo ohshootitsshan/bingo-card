@@ -120,16 +120,6 @@ body {
 }
 
 @media (max-width: 480px) {
-    .site-theme-picker-label {
-        display: block;
-        padding: 8px 14px;
-    }
-
-    .site-theme-picker {
-        position: static;
-        display: block;
-    }
-
     .sos-page-nav {
         flex-direction: column;
         align-items: flex-start;

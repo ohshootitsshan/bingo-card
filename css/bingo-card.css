@@ -334,16 +334,6 @@ a {
 }
 
 @media (max-width: 480px) {
-  .site-theme-picker-label {
-    display: block;
-    padding: 8px 14px;
-  }
-
-  .site-theme-picker {
-    position: static;
-    display: block;
-  }
-
   .bingo-page {
     padding: 16px 8px;
     align-items: flex-start;
@@ -374,3 +364,29 @@ a {
 }
 
 .site-theme-picker:focus-visible { outline: 2px solid var(--site-accent, var(--accent-color, var(--ink-soft))); outline-offset: 2px; }
+
+body:not(.home-page) .site-theme-picker-label {
+  position: fixed;
+  left: 14px;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 200;
+  display: block;
+  width: 40px;
+  height: 38px;
+}
+
+body:not(.home-page)[data-theme] .site-theme-picker {
+  position: absolute;
+  inset: 0;
+  width: 40px;
+  height: 38px;
+  min-width: 0;
+  padding: 0;
+  color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--accent-color, var(--ink)) 50%), linear-gradient(135deg, var(--accent-color, var(--ink)) 50%, transparent 50%);
+  background-position: 15px 16px, 20px 16px;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}

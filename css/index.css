@@ -224,8 +224,8 @@ body[data-theme="purple"] .nav-btn:hover span.desc {
 @media (max-width: 380px) {
   body {
     min-height: 100svh;
-    justify-content: flex-start;
-    padding: max(12px, env(safe-area-inset-top)) 14px calc(64px + env(safe-area-inset-bottom));
+    justify-content: center;
+    padding: max(12px, env(safe-area-inset-top)) 14px max(12px, env(safe-area-inset-bottom));
   }
 
   .home-container {
