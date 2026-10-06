@@ -8,18 +8,18 @@
 body[data-theme="simple"] {
     --font-body: 'Karla', ui-sans-serif, system-ui, sans-serif;
     --font-heading: 'Newsreader', ui-serif, Georgia, serif;
-    --page-start: #FAF7F1;
-    --page-end: #FAF7F1;
-    --card-bg: #F1EAD9;
+    --page-start: #f4f0e7;
+    --page-end: #f4f0e7;
+    --card-bg: #F7F2E7;
     --panel-bg: #F7F2E7;
-    --card-border: #E2D8C2;
-    --ink: #2B2C22;
-    --text-color: #2B2C22;
+    --card-border: #ded8ca;
+    --ink: #3f4037;
+    --text-color: #3f4037;
     --text-muted: #63645A;
-    --heading-color: #2B2C22;
-    --accent-color: #E2D8C2;
-    --btn-bg: #F7F2E7;
-    --btn-hover: #F7F2E7;
+    --heading-color: #63645A;
+    --accent-color: #ded8ca;
+    --btn-bg: #fbf8f1;
+    --btn-hover: #f1ecdf;
 }
 
 body[data-theme="medieval"] {
@@ -54,6 +54,23 @@ body[data-theme="purple"] {
     --accent-color: #B6C649;
     --btn-bg: rgba(255, 255, 255, 0.32);
     --btn-hover: #B6C649;
+}
+
+body[data-theme="literature"] {
+    --font-body: 'EB Garamond', Georgia, serif;
+    --font-heading: 'EB Garamond', Georgia, serif;
+    --page-start: #eadbb8;
+    --page-end: #ddc696;
+    --card-bg: #f5ebd1;
+    --panel-bg: #efe1bf;
+    --card-border: #b79a66;
+    --ink: #493727;
+    --text-color: #493727;
+    --text-muted: #765f43;
+    --heading-color: #5c402b;
+    --accent-color: #9a7747;
+    --btn-bg: #e8d5aa;
+    --btn-hover: #765332;
 }
 
 /* --------------------------------------------------------------------------
@@ -335,6 +352,16 @@ button.choice-btn:hover, .action-btn:hover, .secondary-btn:hover {
     margin-bottom: 0.4rem;
 }
 
+body[data-theme="medieval"] .toolkit-item h4,
+body[data-theme="medieval"] .recommendation-box h3,
+body[data-theme="medieval"] h2#item-detail-title {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: var(--text-color);
+    margin-bottom: 0.4rem;
+}
+
 .toolkit-item p {
     font-size: 0.9rem;
     color: var(--text-muted);
@@ -380,10 +407,6 @@ button.choice-btn:hover, .action-btn:hover, .secondary-btn:hover {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
-}
-.wheel-image-container img {
-    max-width: 100%;
-    height: auto;
 }
 /* ==========================================================================
    Dopamine Menu Styles
@@ -565,7 +588,7 @@ body[data-theme="purple"] .dopa-card {
 .item-detail-image-wrap img {
     display: block;
     max-width: 100%;
-    max-height: 60vh;
+    max-height: 50vh;
     height: auto;
     margin: 0 auto;
     object-fit: contain;
@@ -573,8 +596,9 @@ body[data-theme="purple"] .dopa-card {
 
 .item-detail-embed {
     overflow: hidden;
-    margin: 1rem 0 1.5rem;
+    margin: 1rem auto 1.5rem;
     border-radius: 12px;
+    width: min(100%, 88.888vh);
     aspect-ratio: 16 / 9;
     background: rgba(0, 0, 0, 0.12);
 }
@@ -588,7 +612,13 @@ body[data-theme="purple"] .dopa-card {
 
 .item-detail-embed.spotify {
     aspect-ratio: auto;
-    height: 352px;
+    width: 100%;
+    height: min(352px, 50vh);
+}
+
+.item-detail-embed.pinterest {
+    width: min(100%, max(120px, calc((min(90vh, 900px) - 300px) / 1.97)));
+    aspect-ratio: 1 / 1.97;
 }
 
 .item-detail-fallback {
@@ -791,7 +821,7 @@ body[data-theme="purple"] .item-detail-close {
     }
 
     .item-detail-embed.spotify {
-        height: 232px;
+        height: min(232px, 50vh);
     }
 }
 
@@ -802,4 +832,141 @@ body[data-theme="purple"] .site-theme-picker {
 body[data-theme="purple"] .recommendation-box .toolkit-badge {
     background: var(--accent-color) !important;
     color: var(--card-bg) !important;
+}
+
+body[data-theme="literature"] .sos-page-nav {
+    border-bottom: 0;
+    box-shadow: 0 4px 12px rgba(82, 58, 31, 0.1);
+}
+
+body[data-theme="literature"] .sos-card,
+body[data-theme="literature"] .baseline-banner,
+body[data-theme="literature"] .recommendation-box,
+body[data-theme="literature"] .toolkit-item,
+body[data-theme="literature"] .modal-box {
+    border: 0;
+    box-shadow: 0 10px 24px rgba(82, 58, 31, 0.16);
+}
+
+body[data-theme="simple"] .sos-page-nav {
+    background: transparent;
+    border-bottom: 1px solid var(--card-border);
+    box-shadow: 0 2px 8px rgba(63, 64, 55, 0.04);
+}
+
+body[data-theme="simple"] .sos-card,
+body[data-theme="simple"] .modal-box {
+    background: var(--panel-bg);
+    border: 0;
+    box-shadow: 0 4px 16px rgba(63, 64, 55, 0.08);
+}
+
+body[data-theme="simple"] .baseline-banner,
+body[data-theme="simple"] .recommendation-box,
+body[data-theme="simple"] .toolkit-item {
+    background: #fbf8f1;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 2px 8px rgba(63, 64, 55, 0.05);
+}
+
+body[data-theme="simple"] button.choice-btn,
+body[data-theme="simple"] .action-btn,
+body[data-theme="simple"] .secondary-btn,
+body[data-theme="simple"] .filter-btn,
+body[data-theme="simple"] .item-detail-close,
+body[data-theme="simple"] .modal-close-btn {
+    background: #fbf8f1;
+    border: 1px solid var(--card-border);
+    color: var(--text-color);
+    box-shadow: none;
+}
+
+body[data-theme="simple"] .filter-btn.active {
+    background: #eee8da;
+    border-color: #d4ccba;
+}
+
+body[data-theme="simple"] button.choice-btn:hover,
+body[data-theme="simple"] .action-btn:hover,
+body[data-theme="simple"] .secondary-btn:hover,
+body[data-theme="simple"] .filter-btn:hover,
+body[data-theme="simple"] .modal-close-btn:hover {
+    background: #f1ecdf;
+    color: var(--text-color);
+    box-shadow: 0 2px 6px rgba(63, 64, 55, 0.07);
+}
+
+body[data-theme="simple"] .action-btn.is-active {
+    background: #eee8da !important;
+    border-color: #d4ccba;
+    color: var(--text-color) !important;
+}
+
+body[data-theme="simple"] .primary-link-btn {
+    background: #fbf8f1;
+    border: 1px solid var(--card-border);
+    color: var(--text-color);
+}
+
+body[data-theme="simple"] .site-theme-picker {
+    background: #fbf8f1;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 4px 12px rgba(63, 64, 55, 0.1);
+}
+
+body[data-theme="simple"] .item-detail-close:focus-visible,
+body[data-theme="simple"] .toolkit-open-btn:focus-visible {
+    outline: 2px solid var(--text-muted);
+}
+
+body[data-theme="literature"] .sos-card,
+body[data-theme="literature"] .modal-box {
+    background: #f5ebd1;
+}
+
+body[data-theme="literature"] .baseline-banner,
+body[data-theme="literature"] .recommendation-box,
+body[data-theme="literature"] .toolkit-item {
+    background: #fbf4e3;
+}
+
+body[data-theme="literature"] button.choice-btn,
+body[data-theme="literature"] .action-btn,
+body[data-theme="literature"] .secondary-btn,
+body[data-theme="literature"] .filter-btn,
+body[data-theme="literature"] .item-detail-close,
+body[data-theme="literature"] .site-theme-picker {
+    border: 0;
+    box-shadow: 0 4px 10px rgba(82, 58, 31, 0.16);
+}
+
+body[data-theme="literature"] .filter-btn {
+    background: #fbf4e3;
+    color: var(--text-color);
+}
+
+body[data-theme="literature"] .filter-btn.active,
+body[data-theme="literature"] button.choice-btn:hover,
+body[data-theme="literature"] .action-btn:hover,
+body[data-theme="literature"] .secondary-btn:hover {
+    background: #765332;
+    color: #fbf4e3;
+}
+
+body[data-theme="literature"] .item-detail-close {
+    background: #e8d5aa;
+}
+
+body[data-theme="literature"] .site-theme-picker {
+    color: var(--text-color);
+    background-color: #f5ebd1;
+}
+
+body[data-theme="literature"] .item-detail-close:focus-visible,
+body[data-theme="literature"] .toolkit-open-btn:focus-visible,
+body[data-theme="literature"] .site-theme-picker:focus-visible,
+body[data-theme="literature"] button:focus-visible,
+body[data-theme="literature"] a:focus-visible {
+    outline: 3px solid #765332;
+    outline-offset: 3px;
 }

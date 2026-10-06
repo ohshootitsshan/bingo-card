@@ -18,6 +18,12 @@ const MASTER_DEFAULT_SYMPTOMS = [
   "Stomach Cramps"
 ];
 
+const getLogTime = (log) => {
+  const timestamp = log.loggedAt || log.timestamp;
+  const parsedTime = timestamp ? new Date(timestamp).getTime() : NaN;
+  return Number.isNaN(parsedTime) ? Number(log.id) || 0 : parsedTime;
+};
+
 
 function FoodTrackerApp() {
   // 1. Initial Default Options (Loaded from Master Database or localStorage)
@@ -124,14 +130,19 @@ function FoodTrackerApp() {
       name: itemToLog,
       ingredients: loggedIngredients,
       notes: loggedNotes,
+      loggedAt: entryTimestamp || new Date().toISOString(),
       timestamp: formattedDate
     };
 
-    setLogs([newEntry, ...logs]);
+    setLogs(currentLogs =>
+      [...currentLogs, newEntry].sort((a, b) => getLogTime(b) - getLogTime(a))
+    );
 
     // Reset custom input fields
     setCustomInput('');
     setSaveToDropdown(false);
+    setMealIngredients('');
+    setGeneralNotes('');
     setEntryTimestamp(getCurrentLocalDateTime());
   };
 
@@ -286,7 +297,7 @@ function FoodTrackerApp() {
           <p style={{ color: 'var(--ink-soft)', fontStyle: 'italic', marginTop: '1rem' }}>No entries logged yet. Add your first meal or symptom above!</p>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '1rem' }}>
-            {logs.map((log) => (
+            {[...logs].sort((a, b) => getLogTime(b) - getLogTime(a)).map((log) => (
               <div 
                 key={log.id} 
                 className="food-log-entry"

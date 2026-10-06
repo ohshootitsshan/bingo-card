@@ -8,8 +8,22 @@ const WORDS = [
   "Make bed", "Series or movie", "Paint nails", "Before it gets worse task", "8ish hours of sleep"
 ];
 
-// Swap this out with any image URL (PNG, SVG, etc.) to change the marker.
-const MARK_IMAGE_URL = "img/gold-star.png"
+// Set each theme's marker to its own image URL (PNG, SVG, etc.).
+const MARK_IMAGE_URLS = {
+  simple: "img/gold-star.png",
+  medieval: "img/gold-star.png",
+  purple: "img/none",
+  literature: "img/gold-star.png"
+};
+const SIMPLE_MARK_COLORS = [
+  "#6F7F5D", // Movement
+  "#3E7C8C", // Hydration
+  "#8C4A5B", // Protein
+  "#B98A2E", // Fibre
+  "#6B4C77", // Supplements
+  "#47536B", // Sleep
+  "#B9765F"  // Mindfulness
+];
 const STORAGE_KEY = "bingoCardState";
 
 function shuffle(arr) {
@@ -31,6 +45,10 @@ function randomAngle() {
   return Math.floor(Math.random() * 360);
 }
 
+function randomSimpleMarkColor() {
+  return SIMPLE_MARK_COLORS[Math.floor(Math.random() * SIMPLE_MARK_COLORS.length)];
+}
+
 function todayKey() {
   const today = new Date();
   const month = String(today.getMonth() + 1).padStart(2, "0");
@@ -43,7 +61,8 @@ function makeCardState() {
     date: todayKey(),
     grid: makeGrid(),
     marked: new Set([12]),
-    markRotations: new Map([[12, randomAngle()]])
+    markRotations: new Map([[12, randomAngle()]]),
+    markColors: new Map([[12, randomSimpleMarkColor()]])
   };
 }
 
@@ -52,11 +71,21 @@ function loadCardState() {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
     if (saved?.date === todayKey() && Array.isArray(saved.grid) && saved.grid.length === 25 &&
         Array.isArray(saved.marked) && Array.isArray(saved.markRotations)) {
+      const marked = new Set(saved.marked);
+      const markColors = new Map(
+        Array.isArray(saved.markColors)
+          ? saved.markColors
+          : saved.marked.map(index => [index, randomSimpleMarkColor()])
+      );
+      marked.forEach(index => {
+        if (!markColors.has(index)) markColors.set(index, randomSimpleMarkColor());
+      });
       return {
         date: saved.date,
         grid: saved.grid,
-        marked: new Set(saved.marked),
-        markRotations: new Map(saved.markRotations)
+        marked,
+        markRotations: new Map(saved.markRotations),
+        markColors
       };
     }
   } catch {}
@@ -74,9 +103,19 @@ function checkBingo(marked) {
 
 function BingoCard() {
   const [card, setCard] = useState(loadCardState);
-  const { grid, marked, markRotations } = card;
+  const [theme, setTheme] = useState(() => document.body.dataset.theme || "simple");
+  const { grid, marked, markRotations, markColors } = card;
+  const markImageUrl = MARK_IMAGE_URLS[theme] || MARK_IMAGE_URLS.simple;
 
   const hasBingo = checkBingo(marked);
+
+  React.useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setTheme(document.body.dataset.theme || "simple");
+    });
+    observer.observe(document.body, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => observer.disconnect();
+  }, []);
 
   React.useEffect(() => {
     try {
@@ -84,7 +123,8 @@ function BingoCard() {
         date: card.date,
         grid: card.grid,
         marked: [...card.marked],
-        markRotations: [...card.markRotations]
+        markRotations: [...card.markRotations],
+        markColors: [...card.markColors]
       }));
     } catch {}
   }, [card]);
@@ -94,14 +134,17 @@ function BingoCard() {
     setCard(prev => {
       const nextMarked = new Set(prev.marked);
       const nextRotations = new Map(prev.markRotations);
+      const nextColors = new Map(prev.markColors);
       if (nextMarked.has(i)) {
         nextMarked.delete(i);
         nextRotations.delete(i);
+        nextColors.delete(i);
       } else {
         nextMarked.add(i);
         nextRotations.set(i, randomAngle());
+        nextColors.set(i, randomSimpleMarkColor());
       }
-      return { ...prev, marked: nextMarked, markRotations: nextRotations };
+      return { ...prev, marked: nextMarked, markRotations: nextRotations, markColors: nextColors };
     });
   }
 
@@ -136,9 +179,16 @@ function BingoCard() {
                 className={`bingo-cell${isFree ? " is-free" : ""}`}
               >
                 <span>{word}</span>
-                {isMarked && (
+                {isMarked && theme === "simple" && (
+                  <span
+                    aria-label="marked"
+                    className="bingo-cell-mark bingo-cell-mark-circle"
+                    style={{ backgroundColor: markColors.get(i) }}
+                  />
+                )}
+                {isMarked && theme !== "simple" && (
                   <img
-                    src={MARK_IMAGE_URL}
+                    src={markImageUrl}
                     alt="marked"
                     className="bingo-cell-mark"
                     style={{ transform: `rotate(${markRotations.get(i) ?? 0}deg)` }}

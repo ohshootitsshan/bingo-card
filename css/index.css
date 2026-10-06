@@ -55,6 +55,27 @@ body[data-theme="simple"] {
   --font-family-head: "EB Garamond", sans-serif;
   --font-family-main: "DM Mono", monospace;
  }
+
+body[data-theme="literature"] {
+  --page-start: #eadbb8;
+  --page-end: #ddc696;
+  --panel-bg: #f5ebd1;
+  --heading-color: #5c402b;
+  --accent-color: #67492f;
+  --accent-hover: #8b6840;
+  --letter-color: #765332;
+  --win-color: #b38a42;
+  --cell-bg: #f8f0dc;
+  --cell-hover: #ead7a9;
+  --cell-border: #b79a66;
+  --cell-font-color: #493727;
+  --free-bg: #e8d5aa;
+  --free-border: #aa8854;
+  --free-color: #493727;
+  --font-family-head: 'EB Garamond', Georgia, serif;
+  --font-family-main: 'EB Garamond', Georgia, serif;
+}
+
  /* Simple theme css */
 html {
   -webkit-text-size-adjust: 100%;
@@ -124,7 +145,24 @@ body {
     text-align: left;
     font-weight: 600;
     font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
     transition: all 0.2s ease;
+  }
+
+  .report-btn {
+    width: auto;
+    align-self: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: #e6e9dc;
+    border: 1px solid #cbd1be;
+    color: #515847;
+    box-shadow: none;
+    font-size: 14px;
+    font-weight: 400;
   }
   .nav-btn:hover {
     border-color: var(--heading-color);
@@ -143,7 +181,6 @@ body {
     font-size: 18px;
     color: var(--heading-color);
   }
-
   footer {
     margin-top: 30px;
     font-size: 12px;
@@ -221,6 +258,85 @@ body[data-theme="purple"] .nav-btn:hover span.desc {
   color: var(--heading-color);
 }
 
+body[data-theme="literature"] .home-container {
+  background: #f5ebd1;
+  border: 0;
+  box-shadow: 0 16px 36px rgba(82, 58, 31, 0.2);
+}
+
+body[data-theme="literature"] .nav-btn {
+  background: #fbf4e3;
+  border: 0;
+  box-shadow: 0 5px 12px rgba(82, 58, 31, 0.12);
+}
+
+body[data-theme="literature"] .nav-btn:hover {
+  background: #f8efd8;
+  box-shadow: 0 8px 18px rgba(82, 58, 31, 0.18);
+}
+
+body[data-theme="literature"] .site-theme-picker {
+  border: 0;
+  box-shadow: 0 4px 12px rgba(82, 58, 31, 0.2);
+}
+
+body[data-theme="literature"] .nav-btn:focus-visible,
+body[data-theme="literature"] .site-theme-picker:focus-visible {
+  outline: 3px solid #765332;
+  outline-offset: 3px;
+}
+
+.report-btn:focus-visible {
+  outline: 2px solid var(--heading-color, var(--accent-color));
+  outline-offset: 3px;
+}
+
+.report-btn .arrow {
+  color: currentColor;
+  font-size: 16px;
+}
+
+.report-btn:hover {
+  background: #dce2cf;
+  border-color: #b8c1a6;
+  color: #424a39;
+  box-shadow: 0 3px 10px rgba(63, 64, 55, 0.1);
+}
+
+body[data-theme="medieval"] .report-btn {
+  background: #FFBF00;
+  border-color: #C6C013;
+  color: #1F0D51;
+}
+
+body[data-theme="medieval"] .report-btn:hover {
+  background: #e5ad00;
+}
+
+body[data-theme="purple"] .report-btn {
+  background: #B6C649;
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #40377d;
+  box-shadow: 0 4px 12px rgba(49, 46, 129, 0.12);
+}
+
+body[data-theme="purple"] .report-btn:hover {
+  background: #a8b83d;
+  box-shadow: 0 6px 16px rgba(49, 46, 129, 0.2);
+}
+
+body[data-theme="literature"] .report-btn {
+  background: #e8d5aa;
+  border-color: #d2bc8b;
+  color: #5c402b;
+  box-shadow: 0 3px 9px rgba(82, 58, 31, 0.1);
+}
+
+body[data-theme="literature"] .report-btn:hover {
+  background: #dec695;
+  box-shadow: 0 5px 12px rgba(82, 58, 31, 0.16);
+}
+
 @media (max-width: 380px) {
   body {
     min-height: 100svh;
@@ -250,6 +366,11 @@ body[data-theme="purple"] .nav-btn:hover span.desc {
     gap: 8px;
     padding: 13px 14px;
     font-size: 15px;
+  }
+
+  .report-btn {
+    padding: 9px 14px;
+    font-size: 13px;
   }
 
   .nav-btn > div:first-child {

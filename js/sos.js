@@ -2,78 +2,32 @@
 // TOOLKIT ITEMS DATABASE
 // ==========================================
 const toolkitItems = [
-    {
-        id: "water",
-        category: "physical",
-        badge: "Physical Refresh",
-        title: "Glass of Ice Water",
-        desc: "Step away and get a cold glass of water. Focus completely on the temperature and sensation of swallowing.",
-        linkText: "Done ✓",
-        linkUrl: "#",
-        details: "Take a brief sensory pause with a cold drink.",
-        steps: ["Fill a glass with cold water and notice its temperature in your hands.", "Take one slow sip and notice the sensation as you swallow.", "Continue at a comfortable pace. You do not need to finish the glass." ]
-    },
-    {
-        id: "chocolate",
-        category: "physical",
-        badge: "Physical Refresh",
-        title: "A Piece of Chocolate",
-        desc: "Savor a small piece of dark or milk chocolate slowly without distractions.",
-        linkText: "Treat time",
-        linkUrl: "#",
-        details: "Use one small bite as a grounding exercise. Skip this if chocolate is not right for you.",
-        steps: ["Notice the color and shape before you take a bite.", "Let it rest in your mouth and notice the texture and flavor.", "Take a breath before deciding whether you want another bite."]
-    },
-    {
-        id: "shower",
-        category: "physical",
-        badge: "Physical Refresh",
-        title: "Take a Warm Shower",
-        desc: "Let warm water reset your nervous system and wash away physical tension.",
-        linkText: "Step in",
-        linkUrl: "#",
-        details: "A short, comfortable shower can give you a change of temperature and surroundings.",
-        steps: ["Set the water to a comfortable temperature.", "Notice the feeling of the water on your shoulders or hands.", "Stay only as long as feels helpful; a quick rinse counts."]
-    },
-    {
-        id: "walk",
-        category: "physical",
-        badge: "Physical Refresh",
-        title: "Short Fresh Air Walk",
-        desc: "Step outside for 5-10 minutes just to change your environment and stretch your legs.",
-        linkText: "Let's go",
-        linkUrl: "#",
-        details: "Keep the goal small: a few minutes outside or by an open window is enough.",
-        steps: ["Choose a comfortable route, even if it is just to the end of the street.", "Let your attention rest on one thing you can see, hear, or feel.", "Turn back whenever you are ready. This is not a workout."]
-    },
+    // ==========================================
+    // AUDIO & SOUNDS
+    // ==========================================
     {
         id: "soundbath",
-        category: "audio",
+        categories: ["audio"],
         badge: "Audio & Sounds",
         title: "Soundbath Meditation",
         desc: "Put on headphones and let ambient tones or singing bowls soothe a racing mind.",
         linkText: "Listen on Headspace",
         linkUrl: "https://hdsp.co/share/69a710145e41966c0fc731ce",
         details: "Settle somewhere comfortable, choose a gentle volume, and let the sound be background rather than something you need to concentrate on.",
-        imageUrl: "https://braveparenting.net/wp-content/uploads/2025/01/headspace-app-logo.png"
     },
     {
         id: "breathwork",
-        category: "audio",
+        categories: ["audio"],
         badge: "Audio & Sounds",
-        title: "Box Breathing Exercise",
-        desc: "Follow a guided 4-4-4-4 breathing pace to lower your heart rate instantly.",
-        linkText: "Try breathing guide",
-        linkUrl: "https://www.youtube.com/watch?v=buqs05FDqAA",
-        details: "Try a gentle four-part rhythm. Keep each count comfortable, breathe normally if you feel light-headed, and stop whenever you want.",
-        steps: ["Breathe in gently for a count of four.", "Hold softly for four, without straining.", "Breathe out for four.", "Pause for four, then repeat for a few rounds."],
-        embedUrl: "https://www.youtube-nocookie.com/embed/buqs05FDqAA",
-        embedTitle: "Guided Box Breathing: 4-4-4-4",
-        embedType: "youtube"
+        title: "5 Minute Reenergise Breathwork",
+        desc: "Reconnect with your energy through deep, nourishing breaths. This speedy breathwork is designed to lift your mood and help you reset, leaving you feeling refreshed and ready to embrace the rest of your day.",
+        linkText: "Listen on Deliciously Ella",
+        linkUrl: "https://www.deliciouslyella.com/wellness/meditation/5-minute-reenergise-breathwork",
+        details: "Reconnect with your energy through deep, nourishing breaths. This speedy breathwork is designed to lift your mood and help you reset, leaving you feeling refreshed and ready to embrace the rest of your day.",
     },
     {
         id: "playlist",
-        category: "audio",
+        categories: ["audio", "calm"],
         badge: "Audio & Sounds",
         title: "Comfort Playlist",
         desc: "Put on your comfort playlist.",
@@ -85,53 +39,187 @@ const toolkitItems = [
         embedType: "spotify"
     },
     {
+        id: "sleepnoise",
+        categories: ["audio"],
+        badge: "Audio & Sounds",
+        title: "Sleep Noise",
+        desc: "Create a calming soundscape for better sleep.",
+        linkText: "Listen on Headspace",
+        linkUrl: "https://hdsp.co/share/69aa90a5f907407f30e01da4",
+        details: "Settle somewhere comfortable, choose a gentle volume, and let the sound be background rather than something you need to concentrate on.",
+    },
+    {
+        id: "affirmations",
+        categories: ["audio"],
+        badge: "Audio & Sounds",
+        title: "Resilience Affirmations",
+        desc: "Shift your mindset with this 5-minute affirmation track which will leave you feeling empowered and resilient.",
+        linkText: "Listen on Deliciously Ella",
+        linkUrl: "https://www.deliciouslyella.com/wellness/meditation/resilience-affirmations",
+        details: "Shift your mindset with this 5-minute affirmation track which will leave you feeling empowered and resilient.",
+    },
+    // ==========================================
+    // DBT SKILLS
+    // ==========================================
+    {
+        id: "please",
+        categories: ["DBT Skills"],
+        badge: "DBT Skills",
+        title: "PLEASE",
+        desc: "When you're physically run down, emotions can feel bigger and harder to manage. PLEASE skills remind you to care for your body, creating a stable foundation for emotional",
+        linkText: "PLEASE",
+        linkUrl: "https://i.pinimg.com/736x/1c/c2/c9/1cc2c907c46c807a74f80ae3d9281598.jpg",
+        details: "Take care of your body first.",
+        imageUrl: "https://i.pinimg.com/736x/1c/c2/c9/1cc2c907c46c807a74f80ae3d9281598.jpg",
+        imageAlt: "P.L.E.A.S.E. skills",
+    },
+    {
+        id: "improve",
+        categories: ["DBT Skills"],
+        badge: "DBT Skills",
+        title: "IMPROVE the Moment",
+        desc: "When you're in distress, it can feel like you're stuck in the moment, unable to see a way forward.",
+        linkText: "IMPROVE the Moment",
+        linkUrl: "https://i.pinimg.com/1200x/af/77/b3/af77b36b902e3cb49721491788300c05.jpg",
+        details: "IMPROVE helps you take small, intentional steps to manage discomfort and regain calm and control.",
+        imageUrl: "https://i.pinimg.com/1200x/af/77/b3/af77b36b902e3cb49721491788300c05.jpg",
+        imageAlt: "IMPROVE the Moment",
+    },
+    {
+        id: "tipp",
+        categories: ["DBT Skills"],
+        badge: "DBT Skills",
+        title: "TIPP",
+        desc: "TIPP is for the moments when you feel too distressed to use other skills.",
+        linkText: "TIPP",
+        linkUrl: "https://i.pinimg.com/736x/92/6c/cc/926ccce9fa44771f60c5eea44474cd71.jpg",
+        details: "They will bring your distress down just enough to be able to determine which skills to use next.",
+        imageUrl: "https://i.pinimg.com/736x/92/6c/cc/926ccce9fa44771f60c5eea44474cd71.jpg",
+        imageAlt: "T.I.P.P. Skills",
+    },
+    {
+        id: "stop",
+        categories: ["DBT Skills"],
+        badge: "DBT Skills",
+        title: "STOP",
+        desc: "STOP helps you resist acting impulsively on your emotions, allowing you to avoid escalating an already difficult situation.",
+        linkText: "STOP",
+        linkUrl: "https://i.pinimg.com/736x/0c/2a/cb/0c2acbffd76198175415bf19d6220651.jpg",
+        details: "They will bring your distress down just enough to be able to determine which skills to use next.",
+        imageUrl: "https://i.pinimg.com/736x/0c/2a/cb/0c2acbffd76198175415bf19d6220651.jpg",
+        imageAlt: "STOP Skills",
+    },
+    {
+        id: "dear_man",
+        categories: ["DBT Skills"],
+        badge: "DBT Skills",
+        title: "DEAR MAN",
+        desc: "DEAR MAN helps you ask for what you want or say no while respecting both yourself and others.",
+        linkText: "DEAR MAN",
+        linkUrl: "https://i.pinimg.com/736x/8e/c5/e1/8ec5e1c70dd9bc3769b1db96fb0dbe0c.jpg",
+        imageUrl: "https://i.pinimg.com/736x/8e/c5/e1/8ec5e1c70dd9bc3769b1db96fb0dbe0c.jpg",
+        imageAlt: "DEAR MAN Skills",
+    },
+    {
+        id: "accepts",
+        categories: ["DBT Skills"],
+        badge: "DBT Skills",
+        title: "ACCEPTS",
+        desc: "ACCEPTS skills help you tolerate distress and accept the situation as it is, rather than trying to change it.",
+        linkText: "ACCEPTS",
+        linkUrl: "https://i.pinimg.com/1200x/81/5d/a3/815da316fcfaf0fdc730951e14878c08.jpg",
+        imageUrl: "https://i.pinimg.com/1200x/81/5d/a3/815da316fcfaf0fdc730951e14878c08.jpg",
+        imageAlt: "ACCEPTS Skills",
+    },
+    {
+        id: "wise_mind",
+        categories: ["DBT Skills"],
+        badge: "DBT Skills",
+        title: "WISE MIND & Willingness",
+        desc: "WISE MIND helps you balance your emotional and rational minds to make better decisions.",
+        linkText: "WISE MIND",
+        linkUrl: "https://i.pinimg.com/736x/dc/5b/89/dc5b8956caf323d153ea75de067b068c.jpg",
+        details: "Willingness is being flexible. It's accepting the world as it is, and being willing to fully engage even when things are not the way you want them to be.",
+        imageUrl: "https://i.pinimg.com/736x/dc/5b/89/dc5b8956caf323d153ea75de067b068c.jpg",
+        imageAlt: "WISE MIND Skills",
+        steps: ["Notice your resistance", "Radically accept it", "Turn your mind toward acceptance and willingness (you might have to do this several times)","Use half smile and willing hands","Participate in reality"]
+    },
+    // ==========================================
+    // PHYSICAL & SENSORY
+    // ==========================================
+    {
         id: "tea",
-        category: "mind",
-        badge: "Calm & Focus",
+        categories: ["physical"],
+        badge: "Physical Refresh",
         title: "Make a Warm Cup of Tea",
         desc: "Focus on the ritual of boiling water, steeping tea bags, and wrapping hands around a warm mug.",
         linkText: "Brew time",
         linkUrl: "#",
-        details: "Let making a warm drink be the whole task. Choose any drink that works for you.",
-        steps: ["Choose a tea or another warm drink.", "Notice one small part of the process: the sound of water, the scent, or the warmth of the cup.", "Take a seat and enjoy a few slow sips."]
-    },
-    {
-        id: "game",
-        category: "mind",
-        badge: "Calm & Focus",
-        title: "Low-Stakes Video Game",
-        desc: "Engage your hands and distract your brain with 15 minutes of a cozy game.",
-        linkText: "Play",
-        linkUrl: "#",
-        details: "Pick something familiar and easy to pause. There is no goal to reach or score to beat.",
-        steps: ["Choose a game that feels comfortable rather than demanding.", "Set a short timer only if that makes stopping easier.", "Pause or stop whenever you have had enough."]
+        details: "Let making a warm drink be the whole task.",
+        steps: ["Choose a tea.", "Notice one small part of the process: the sound of water, the scent, or the warmth of the cup.", "Take a seat and enjoy a few slow sips."]
     },
     {
         id: "objects",
-        category: "physical",
+        categories: ["physical"],
         badge: "Physical Objects",
         title: "Comfort Objects Reminder",
-        desc: "Wrap yourself in a weighted blanket, put on comfy socks, or hold a favorite fidget toy.",
+        desc: "Go grab some cozy items to help you feel grounded and safe.",
         linkText: "Grab cozy item",
         linkUrl: "#",
-        details: "Choose one familiar object that feels soothing or grounding.",
-        steps: ["Find a soft layer, warm socks, a cushion, or a fidget object.", "Notice its texture, weight, or temperature.", "Keep it nearby while you take a short pause."]
+        details: "Choose a familiar object that feels soothing or grounding.",
+        steps: ["Pink blankie", "Martin", "Dan hoodie","Fairy catalogue", "Green scarf", "Coral jersey", "Dad's jacket",]
     },
     {
-        id: "focus_timer",
-        category: "focus",
-        badge: "Calm & Focus",
-        title: "Pomodoro / Timer Reset",
-        desc: "Set a tiny 10-minute timer if you need to focus or tackle one micro-task.",
-        linkText: "Set a timer",
-        linkUrl: "https://tomato-timer.com",
-        details: "Choose one small task and give yourself permission to stop when the timer ends.",
-        steps: ["Name one task that can be started in under a minute.", "Set a 10-minute timer, or choose a shorter time if that feels better.", "Work on only that task until the timer ends, then take a break."]
+        id: "water",
+        categories: ["physical"],
+        badge: "Physical Refresh",
+        title: "Glass of Ice Water",
+        desc: "Step away and get a cold glass of water. Focus completely on the temperature and sensation of swallowing.",
+        linkText: "Done ✓",
+        linkUrl: "#",
+        details: "Take a brief sensory pause with a cold drink.",
+        steps: ["Fill a glass with cold water and notice its temperature in your hands.", "Take one slow sip and notice the sensation as you swallow.", "Continue at a comfortable pace. You do not need to finish the glass." ]
     },
+    {
+        id: "chocolate",
+        categories: ["physical"],
+        badge: "Physical Refresh",
+        title: "A Piece of Chocolate",
+        desc: "Savor a small piece of dark or milk chocolate slowly without distractions.",
+        linkText: "Treat time",
+        linkUrl: "#",
+        details: "Use one small bite as a grounding exercise. Skip this if chocolate is not right for you.",
+        steps: ["Notice the color and shape before you take a bite.", "Let it rest in your mouth and notice the texture and flavor.", "Take a breath before deciding whether you want another bite."]
+    },
+    {
+        id: "shower",
+        categories: ["physical"],
+        badge: "Physical Refresh",
+        title: "Take a Warm Shower",
+        desc: "Let warm water reset your nervous system and wash away physical tension.",
+        linkText: "Step in",
+        linkUrl: "#",
+        details: "A short, comfortable shower can give you a change of temperature and surroundings.",
+        steps: ["Set the water to a comfortable temperature.", "Notice the feeling of the water on your shoulders or hands.", "Stay only as long as feels helpful; a quick rinse counts."]
+    },
+    {
+        id: "walk",
+        categories: ["physical"],
+        badge: "Physical Refresh",
+        title: "Short Fresh Air Walk",
+        desc: "Step outside for 5-10 minutes just to change your environment and stretch your legs.",
+        linkText: "Let's go",
+        linkUrl: "#",
+        details: "Keep the goal small: a few minutes outside or by an open window is enough.",
+        steps: ["Choose a comfortable route, even if it is just to the end of the street.", "Let your attention rest on one thing you can see, hear, or feel.", "Turn back whenever you are ready. This is not a workout."]
+    },
+    // ==========================================
+    // VISUAL & TIPS
+    // ==========================================
     {
         id: "overthinking_checklist",
-        category: "mind",
-        badge: "Calm & Focus",
+        categories: ["visual"],
+        badge: "Tips & Tricks",
         title: "Overthinking Checklist",
         desc: "Is something actually wrong, or do you just need to take care of yourself?",
         linkText: "View Checklist",
@@ -139,7 +227,110 @@ const toolkitItems = [
         details: "Is something actually wrong, or do you just need to take care of yourself?",
         imageUrl: "https://i.pinimg.com/1200x/1b/fe/c1/1bfec17835c917fdb4523b395b029515.jpg",
         imageAlt: "Overthinking checklist",
-    }
+    },
+    {
+        id: "visualisation",
+        categories: ["visual"],
+        badge: "Tips & Tricks",
+        title: "Pull out the thoughts visualisation",
+        desc: "A visualisation to help you let go of racing thoughts.",
+        linkText: "Pull out the thoughts",
+        linkUrl: "https://za.pinterest.com/pin/558376053812661716/",
+        details: "Settle somewhere comfortable, choose a gentle volume, and let the sound be background rather than something you need to concentrate on.",
+        embedUrl: "https://assets.pinterest.com/ext/embed.html?id=558376053812661716",
+        embedType: "pinterest"
+    },
+    {
+        id: "feelings_wheel",
+        categories: ["visual"],
+        badge: "Tips & Tricks",
+        title: "Feelings Wheel Reference",
+        desc: "A visual reference to help pinpoint what emotion is present.",
+        linkText: "View Feelings Wheel",
+        linkUrl: "https://za.pinterest.com/pin/448741550400858137/",
+        details: "Use this feelings wheel as a visual reference to help pinpoint what emotion is present.",
+        imageUrl: "https://i.pinimg.com/1200x/4f/91/83/4f91838a04f73ccf356129670ca6e164.jpg",
+        imageAlt: "Feelings Wheel Reference"
+    },
+    {
+        id: "growth_franks",
+        categories: ["visual", "advice"],
+        badge: "Tips & Tricks",
+        title: "The correct environment for growth",
+        desc: "You were designed to grow",
+        linkText: "Listen to Franks",
+        linkUrl: "https://za.pinterest.com/pin/558376053820176133/",
+        details: "You were designed to grow",
+        embedUrl: "https://assets.pinterest.com/ext/embed.html?id=558376053820176133",
+        embedType: "pinterest"
+    },
+    {
+        id: "feelings_franks",
+        categories: ["visual", "advice"],
+        badge: "Tips & Tricks",
+        title: "Feelings are not facts",
+        desc: "My feelings make requests, not declarations",
+        linkText: "Listen to Franks",
+        linkUrl: "https://za.pinterest.com/pin/558376053820176136/",
+        details: "My feelings make requests, not declarations",
+        embedUrl: "https://assets.pinterest.com/ext/embed.html?id=558376053820176136",
+        embedType: "pinterest"
+    },
+    // ==========================================
+    // FOCUS FRANKS!
+    // ==========================================
+    {
+        id: "focus_timer",
+        categories: ["focus"],
+        badge: "Focus Franks!",
+        title: "Pomodoro / Timer Reset",
+        desc: "Set a tiny 10-minute timer if you need to focus or tackle one micro-task.",
+        linkText: "Set a timer",
+        linkUrl: "https://tomato-timer.com",
+        details: "Choose one small task and give yourself permission to stop when the timer ends.",
+        steps: ["Name one task that can be started in under a minute.", "Set a 10-minute timer, or choose a shorter time if that feels better.", "Work on only that task until the timer ends, then take a break."]
+    },
+    // ==========================================
+    // CALM & COZY
+    // ==========================================
+    {
+        id: "game",
+        categories: ["calm"],
+        badge: "Just relax my friend",
+        title: "Low-Stakes Video Game",
+        desc: "Engage your hands and distract your brain with a cozy game.",
+        linkText: "Play a game",
+        linkUrl: "#",
+        details: "Stardew, Terranil or Sims are all good!",
+        steps: ["Choose a game that feels comfortable rather than demanding.", "Set a short timer to make stopping easier.", "Pause or stop whenever you have had enough."]
+    },
+    // ==========================================
+    // NERVOUS SYSTEM REGULATION
+    // ==========================================
+    {
+        id: "nervous_system_regulation_techniques",
+        categories: ["NSR", "visual"],
+        badge: "Nervous System Regulation",
+        title: "Nervous System Regulation Techniques",
+        desc: "Learn techniques to regulate your nervous system and manage stress.",
+        linkText: "Regulate your nervous system",
+        linkUrl: "https://za.pinterest.com/pin/558376053822987782/",
+        embedUrl: "https://assets.pinterest.com/ext/embed.html?id=558376053822987782",
+        embedType: "pinterest",
+        steps: ["Armpit hug", "Butterfly taps", "The Octopus"]
+    },
+    {
+        id: "movement_feelings_wheel",
+        categories: ["NSR", "visual"],
+        badge: "Movement Feelings Wheel",
+        title: "Movement Feelings Wheel",
+        desc: "Move to release your feelings and regulate your nervous system.",
+        linkText: "Regulate your nervous system",
+        linkUrl: "https://za.pinterest.com/pin/558376053821078848/",
+        details: "Move to release your feelings and regulate your nervous system.",
+        imageUrl: "https://i.pinimg.com/1200x/c4/a8/92/c4a892c9a4b87c3c33f1409451936575.jpg",
+        imageAlt: "Movement Feelings Wheel",
+    },
 ];
 
 // ==========================================
@@ -148,23 +339,48 @@ const toolkitItems = [
 const decisionTreeNodes = {
     start: {
         question: "Are you feeling funky?",
-        yes: "is_thirsty",
-        no: "thrive"
+        yes: "is_funky",
+        no: "thrive",
     },
-    is_thirsty: {
-        question: "Are you thirsty or hungry right now?",
-        yes: "recommend_water_food",
-        no: "is_overwhelmed"
+    is_funky: {
+        question: "Are you in distress?",
+        yes: "is_distressed",
+        no: "recommend_please"
     },
-    is_overwhelmed: {
-        question: "Does your brain feel overwhelmed or racing?",
-        yes: "recommend_calm",
-        no: "is_stuck"
+    is_distressed: {
+        question: "Is it extreme distress or crisis?",
+        yes: "is_extreme",
+        no: "recommend_improve"
     },
-    is_stuck: {
-        question: "Do you want to move your body or change your scene?",
-        yes: "recommend_movement",
-        no: "recommend_cozy"
+    is_extreme: {
+        question: "Are you safe right now?",
+        yes: "is_safe",
+        no: "recommend_stop"
+    },
+    is_safe: {
+        question: "Do you feel overwhelmed?",
+        yes: "recommend_tipp",
+        no: "is_whelmed"
+    },
+    is_whelmed: {
+        question: "Can this problem be solved?",
+        yes: "recommend_dear_man",
+        no: "is_unsolveable"
+    },
+    is_unsolveable: {
+        question: "Could distraction help?",
+        yes: "recommend_accepts",
+        no: "is_undistractable"
+    },
+    is_undistractable: {
+        question: "Do you want to deal with what you're feeling?",
+        yes: "recommend_wise_mind",
+        no: "is_avoidant"
+    },
+    is_avoidant: {
+        question: "Do you want to continue feeling bad?",
+        yes: "recommend_work_with_me",
+        no: "recommend_pick_1"
     },
     thrive: {
         isTerminal: true,
@@ -173,37 +389,76 @@ const decisionTreeNodes = {
         linkText: "Browse Kit",
         linkUrl: "#browse"
     },
-    recommend_water_food: {
+    recommend_please: {
         isTerminal: true,
-        title: "Glass of Ice Water & Snack",
-        desc: "Let's take care of the physical basics first. Grab a cold glass of water and a piece of chocolate or a quick snack.",
-        linkText: "Glass of Water",
+        title: "P.L.E.A.S.E.",
+        desc: "When you're physically run down, emotions can feel bigger and harder to manage. PLEASE skills remind you to care for your body, creating a stable foundation for emotional",
+        linkText: "P.L.E.A.S.E.",
         linkUrl: "#",
-        itemId: "water"
+        itemId: "please"
     },
-    recommend_calm: {
+    recommend_improve: {
         isTerminal: true,
-        title: "Soundbath or Box Breathing",
-        desc: "Your nervous system needs a gentle pause. Put on headphones and try 5 minutes of soundbaths or breathing exercises.",
-        linkText: "Try Breathing Guide",
-        linkUrl: "https://www.youtube.com/results?search_query=box+breathing+guided",
-        itemId: "breathwork"
-    },
-    recommend_movement: {
-        isTerminal: true,
-        title: "Short Fresh Air Walk or Shower",
-        desc: "A quick change in temperature or environment will reset your physical energy.",
-        linkText: "View Walk Item",
+        title: "Improve the moment",
+        desc: "When you're in distress, it can feel like you're stuck in the moment, unable to see a way forward. IMPROVE helps you take small, intentional steps to manage discomfort and regain calm and control.",
+        linkText: "IMPROVE the Moment",
         linkUrl: "#",
-        itemId: "walk"
+        itemId: "improve"
     },
-    recommend_cozy: {
+    recommend_tipp: {
         isTerminal: true,
-        title: "Tea & Comfort Media",
-        desc: "Wrap up in cozy items, put on a comfort album, and brew a warm cup of tea.",
-        linkText: "Grab Cozy Item",
+        title: "T.I.P.P.",
+        desc: "TIPP is for the moments when you feel too distressed to use other skills. They will bring your distress down just enough to be able to determine which skills to use next.",
+        linkText: "T.I.P.P. the Moment",
         linkUrl: "#",
-        itemId: "tea"
+        itemId: "tipp"
+    },
+    recommend_stop: {
+        isTerminal: true,
+        title: "STOP",
+        desc: "STOP <br> Use your crisis plan <br> Get care <br> If needed call emergency services or a crisis line.",
+        linkText: "STOP",
+        linkUrl: "#",
+        itemId: "stop"
+    },
+    recommend_dear_man: {
+        isTerminal: true,
+        title: "DEAR MAN",
+        desc: "DEAR MAN helps you ask for what you want or say no while respecting both yourself and others.",
+        linkText: "DEAR MAN",
+        linkUrl: "#",
+        itemId: "dear_man"
+    },
+    recommend_accepts: {
+        isTerminal: true,
+        title: "ACCEPTS",
+        desc: "ACCEPTS skills help you tolerate distress and accept the situation as it is, rather than trying to change it.",
+        linkText: "ACCEPTS",
+        linkUrl: "#",
+        itemId: "accepts"
+    },
+    recommend_wise_mind: {
+        isTerminal: true,
+        title: "WISE MIND",
+        desc: "WISE MIND helps you balance your emotional and rational minds to make better decisions.",
+        linkText: "WISE MIND",
+        linkUrl: "#",
+        itemId: "wise_mind"
+    },
+    recommend_work_with_me: {
+        isTerminal: true,
+        title: "Work With Me",
+        desc: "Okay, take a moment. This feeling probably won't change until you change how you work with it. <br> When you're ready, try one of the skills below.",
+        linkText: "Work With Me",
+        linkText: "Browse Kit",
+        linkUrl: "#browse"
+    },
+    recommend_pick_1: {
+        isTerminal: true,
+        title: "Pick one part of one skill",
+        desc: "Or start again from the beginning.",
+        linkText: "Browse Kit",
+        linkUrl: "#browse"
     }
 };
 
@@ -212,11 +467,12 @@ function SOSToolkitApp() {
     const [activeTab, setActiveTab] = React.useState('toolkit');
 
     const [currentNodeKey, setCurrentNodeKey] = React.useState('start');
-    const [filterCategory, setFilterCategory] = React.useState('all');
+    const [filterCategory, setFilterCategory] = React.useState('audio');
     const [selectedItem, setSelectedItem] = React.useState(null);
     const previousFocusRef = React.useRef(null);
 
     const currentNode = decisionTreeNodes[currentNodeKey];
+    const pinterestUnavailableLocally = selectedItem?.embedType === 'pinterest' && window.location.protocol === 'file:';
 
     const handleAnswer = (answer) => {
         const nextKey = currentNode[answer];
@@ -249,7 +505,7 @@ function SOSToolkitApp() {
 
     const displayedItems = filterCategory === 'all' 
         ? toolkitItems 
-        : toolkitItems.filter(item => item.category === filterCategory);
+        : toolkitItems.filter(item => item.categories.includes(filterCategory));
 
     return (
         <div className={`sos-container${activeTab === 'dopa' ? ' has-dopa-menu' : ''}`}>
@@ -264,7 +520,7 @@ function SOSToolkitApp() {
             {/* ========================================== */}
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
                 <button 
-                    className="action-btn"
+                    className={`action-btn ${activeTab === 'toolkit' ? 'is-active' : ''}`}
                     style={{ 
                         background: activeTab === 'toolkit' ? 'var(--ink)' : 'var(--btn-bg)', 
                         color: activeTab === 'toolkit' ? 'var(--card-bg)' : 'var(--text-color)',
@@ -276,7 +532,7 @@ function SOSToolkitApp() {
                 </button>
 
                 <button 
-                    className="action-btn"
+                    className={`action-btn ${activeTab === 'dopa' ? 'is-active' : ''}`}
                     style={{ 
                         background: activeTab === 'dopa' ? 'var(--ink)' : 'var(--btn-bg)', 
                         color: activeTab === 'dopa' ? 'var(--card-bg)' : 'var(--text-color)',
@@ -312,7 +568,6 @@ function SOSToolkitApp() {
                             </div>
                         ) : (
                             <div className="recommendation-box">
-                                <span className="toolkit-badge" style={{ background: 'var(--heading-color)', color: 'var(--card-bg)', padding: '3px 8px', borderRadius: '4px' }}>Recommended for you</span>
                                 <h3>{currentNode.title}</h3>
                                 <p>{currentNode.desc}</p>
                                 <div className="btn-group">
@@ -333,10 +588,14 @@ function SOSToolkitApp() {
                     <div className="sos-card browse-section" id="browse">
                         <h2>Browse Entire Kit</h2>
                         <div className="category-filter">
-                            <button className={`filter-btn ${filterCategory === 'all' ? 'active' : ''}`} onClick={() => setFilterCategory('all')}>All Items</button>
                             <button className={`filter-btn ${filterCategory === 'audio' ? 'active' : ''}`} onClick={() => setFilterCategory('audio')}>Audio & Sounds</button>
-                            <button className={`filter-btn ${filterCategory === 'mind' ? 'active' : ''}`} onClick={() => setFilterCategory('mind')}>Calm & Focus</button>
+                            <button className={`filter-btn ${filterCategory === 'focus' ? 'active' : ''}`} onClick={() => setFilterCategory('focus')}>Focus Franks!</button>
+                            <button className={`filter-btn ${filterCategory === 'calm' ? 'active' : ''}`} onClick={() => setFilterCategory('calm')}>Just relax my friend</button>
+                            <button className={`filter-btn ${filterCategory === 'NSR' ? 'active' : ''}`} onClick={() => setFilterCategory('NSR')}>Nervous System Regulation</button>
                             <button className={`filter-btn ${filterCategory === 'physical' ? 'active' : ''}`} onClick={() => setFilterCategory('physical')}>Physical & Sensory</button>
+                            <button className={`filter-btn ${filterCategory === 'visual' ? 'active' : ''}`} onClick={() => setFilterCategory('visual')}>Tips & Tricks</button>
+                            <button className={`filter-btn ${filterCategory === 'advice' ? 'active' : ''}`} onClick={() => setFilterCategory('advice')}>Advice</button>
+                            <button className={`filter-btn ${filterCategory === 'DBT Skills' ? 'active' : ''}`} onClick={() => setFilterCategory('DBT Skills')}>DBT Skills</button>
                         </div>
                         <div className="toolkit-grid">
                             {displayedItems.map(item => (
@@ -356,16 +615,6 @@ function SOSToolkitApp() {
                         </div>
                     </div>
 
-                    {/* Feelings Wheel Image Section (At the bottom of Toolkit tab) */}
-                    <div className="sos-card wheel-image-section" id="feelings-wheel">
-                        <h2>Feelings Wheel Reference</h2>
-                        <p style={{ color: 'var(--text-muted)', marginBottom: '1rem', fontSize: '0.95rem' }}>
-                            A visual reference to help pinpoint what emotion is present.
-                        </p>
-                        <div className="wheel-image-container">
-                            <img src="img/feelings-wheel.jpg" alt="Feelings Wheel Reference"/>
-                        </div>
-                    </div>
                 </div>
             )}
 
@@ -460,8 +709,10 @@ function SOSToolkitApp() {
                             <h2>Specials:</h2>
                             <div className="dopa-subtitle">Things I can only do once in a while</div>
                             <ul className="dopa-list">
-                                <li>List item 1</li>
-                                <li>List item 2</li>
+                                <li>take a fancy bath (bubble bath, candle, the works)</li>
+                                <li>solo cafe date (bring a book and order something nice)</li>
+                                <li>weekend creative block</li>
+                                <li>outdoor adventure</li>
                             </ul>
                         </div>
                     </div>
@@ -488,7 +739,7 @@ function SOSToolkitApp() {
                                 <img src={selectedItem.imageUrl} alt={selectedItem.imageAlt || selectedItem.title} />
                             </div>
                         )}
-                        {selectedItem.embedUrl && (
+                        {selectedItem.embedUrl && !pinterestUnavailableLocally && (
                             <div className={`item-detail-embed ${selectedItem.embedType || ''}`}>
                                 <iframe
                                     src={selectedItem.embedUrl}
@@ -498,6 +749,14 @@ function SOSToolkitApp() {
                                     referrerPolicy="strict-origin-when-cross-origin"
                                     loading="lazy"
                                 ></iframe>
+                            </div>
+                        )}
+                        {pinterestUnavailableLocally && (
+                            <div className="item-detail-fallback">
+                                <p>Pinterest embeds are unavailable when this page is opened directly from a file.</p>
+                                <a className="primary-link-btn" href={selectedItem.linkUrl} target="_blank" rel="noopener noreferrer">
+                                    Open on Pinterest
+                                </a>
                             </div>
                         )}
                         {(selectedItem.embedFallbackText || selectedItem.embedFallbackImageUrl) && (
