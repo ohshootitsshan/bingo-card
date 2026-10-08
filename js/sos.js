@@ -461,6 +461,146 @@ const decisionTreeNodes = {
         linkUrl: "#browse"
     }
 };
+{/* ========================================== */}
+{/* 🧠 COMPACT MOOD CHECK-IN WIDGET (4x4 GRID) */}
+{/* ========================================== */}
+function MoodTracker() {
+  const [latestMoodEntry, setLatestMoodEntry] = React.useState(() => {
+    const saved = localStorage.getItem('sosMoodTrackerEntry') || localStorage.getItem('latest_mood');
+    if (!saved) return null;
+    if (!localStorage.getItem('sosMoodTrackerEntry')) {
+      localStorage.setItem('sosMoodTrackerEntry', saved);
+    }
+    return JSON.parse(saved);
+  });
+
+  const [moodNote, setMoodNote] = React.useState('');
+
+  // Updated to accept summary directly or build it from energy/pleasantness
+  const logMood = (energyDetail, pleasantDetail) => {
+    const summaryText = `${energyDetail} & ${pleasantDetail}`;
+    
+    const moodEntry = {
+      id: Date.now(),
+      summary: summaryText,
+      note: moodNote.trim(),
+      timestamp: new Date().toLocaleString([], { dateStyle: 'short', timeStyle: 'short' })
+    };
+
+    // Save to general health logs so it syncs with your weekly email report!
+    const existingLogs = JSON.parse(localStorage.getItem('health_logs') || '[]');
+    localStorage.setItem('health_logs', JSON.stringify([
+      { id: moodEntry.id, type: 'symptom', name: `🧠 Mood: ${moodEntry.summary}`, notes: moodEntry.note, timestamp: moodEntry.timestamp },
+      ...existingLogs
+    ]));
+
+    localStorage.setItem('sosMoodTrackerEntry', JSON.stringify(moodEntry));
+    setLatestMoodEntry(moodEntry);
+    setMoodNote('');
+  };
+
+  return (
+      <div className="sos-mood-tracker" style={{ textAlign: 'center' }}>
+        <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.6rem', color: 'var(--heading-color)', marginBottom: '0.2rem' }}>How are you feeling</h3>
+
+        {latestMoodEntry ? (
+          <div style={{ background: 'var(--card)', padding: '12px', borderRadius: '10px', textAlign: 'center', border: '1px solid var(--free-border)' }}>
+            <div style={{ fontSize: '12px', color: 'var(--heading-color)' }}>Latest Check-in ({latestMoodEntry.timestamp}):</div>
+            <div style={{ fontSize: '16px', fontWeight: 'bold', color: 'var(--accent-color)', margin: '4px 0' }}>
+              ✨ {latestMoodEntry.summary}
+            </div>
+          {latestMoodEntry.note && <div style={{ fontSize: '13px', fontStyle: 'italic' }}>"{latestMoodEntry.note}"</div>}
+            <button 
+            onClick={() => setLatestMoodEntry(null)}
+            style={{ background: 'none', border: 'none', color: 'var(--accent-color)', fontSize: '12px', cursor: 'pointer', textDecoration: 'underline', marginTop: '8px' }}
+            >
+            Log a new mood
+            </button>
+          </div>
+        ) : (
+          <div>
+            {/* Top Axis Label: High Energy */}
+            <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--text-muted)', marginBottom: '4px' }}>
+              ▲ High Energy
+            </div>
+
+            {/* Grid Container with Left/Right Axis Labels */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '4px' }}>
+              
+              {/* Left Axis Label: Unpleasant */}
+              <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--text-muted)', writingMode: 'vertical-rl', transform: 'rotate(180deg)', textAlign: 'center' }}>
+                Unpleasant
+              </div>
+
+              {/* 4x4 Interactive Grid (16 smaller squares) */}
+              <div style={{ 
+                position: 'relative', 
+                width: '260px', 
+                height: '260px', 
+                background: 'var(--panel-bg)', 
+                border: '2px solid var(--card-border)', 
+                borderRadius: '12px', 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(4, 1fr)', 
+                gridTemplateRows: 'repeat(4, 1fr)', 
+                overflow: 'hidden',
+                boxShadow: 'inset 0 2px 6px rgba(0,0,0,0.05)'
+              }}>
+                {/* Generating a 4x4 grid (16 cells) programmatically */}
+                {Array.from({ length: 16 }).map((_, index) => {
+                  const row = Math.floor(index / 4); // 0 (top) to 3 (bottom)
+                  const col = index % 4;             // 0 (left) to 3 (right)
+
+                  // Determine energy and pleasantness based on position
+                  const energyDetail = row === 0 ? 'Very High Energy' : row === 1 ? 'Slightly High Energy' : row === 2 ? 'Slightly Low Energy' : 'Very Low Energy';
+                  
+                  const pleasantDetail = col === 3 ? 'Very Pleasant' : col === 2 ? 'Slightly Pleasant' : col === 1 ? 'Slightly Unpleasant' : 'Very Unpleasant';
+
+                  return (
+                    <div 
+                      key={index}
+                      onClick={() => logMood(`${energyDetail} & ${pleasantDetail}`)}
+                      style={{ 
+                        borderRight: col < 3 ? '1px dashed var(--card-border)' : 'none',
+                        borderBottom: row < 3 ? '1px dashed var(--card-border)' : 'none',
+                        cursor: 'pointer', 
+                        transition: 'background 0.2s' 
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.08)'}
+                      onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                      title={`${energyDetail}, ${pleasantDetail}`}
+                    />
+                  );
+                })}
+              </div>
+
+              {/* Right Axis Label: Pleasant */}
+              <div style={{ fontSize: '10px', fontWeight: 'bold', color: 'var(--text-muted)', writingMode: 'vertical-rl', textAlign: 'center' }}>
+                Pleasant
+              </div>
+
+            </div>
+
+            {/* Bottom Axis Label: Low Energy */}
+            <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--text-muted)', marginBottom: '12px' }}>
+              ▼ Low Energy
+            </div>
+
+          {/* Optional Quick Note Input */}
+          {/* <input
+            type="text"
+            placeholder="Optional note (e.g., after morning coffee)"
+            value={moodNote}
+            onChange={(e) => setMoodNote(e.target.value)}
+            style={{ width: '100%', padding: '8px 12px', borderRadius: '8px', border: '1px solid var(--free-border)', background: 'var(--card)', color: 'var(--ink)', fontSize: '13px', marginBottom: '10px' }}
+          /> */}
+
+        </div>
+      )}
+    </div>
+  );
+}
+
 
 function SOSToolkitApp() {
     // 🧭 TAB STATE: Tracks whether 'toolkit' or 'dopa' is currently active
@@ -549,6 +689,8 @@ function SOSToolkitApp() {
             {/* ========================================== */}
             {activeTab === 'toolkit' && (
                 <div>
+                    <MoodTracker />
+
                     {/* Interactive Decision Tree Card */}
                     <div className="sos-card tree-container" id="decision-tree">
                         <h2>Zero-Energy Decision Helper</h2>
