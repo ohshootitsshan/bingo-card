@@ -486,7 +486,6 @@ function MoodTracker() {
       note: moodNote.trim(),
       timestamp: new Date().toLocaleString([], { dateStyle: 'short', timeStyle: 'short' })
     };
-
     // Save to general health logs so it syncs with your weekly email report!
     const existingLogs = JSON.parse(localStorage.getItem('health_logs') || '[]');
     localStorage.setItem('health_logs', JSON.stringify([
@@ -555,7 +554,6 @@ function MoodTracker() {
                   const energyDetail = row === 0 ? 'Very High Energy' : row === 1 ? 'Slightly High Energy' : row === 2 ? 'Slightly Low Energy' : 'Very Low Energy';
                   
                   const pleasantDetail = col === 3 ? 'Very Pleasant' : col === 2 ? 'Slightly Pleasant' : col === 1 ? 'Slightly Unpleasant' : 'Very Unpleasant';
-
                   return (
                     <div 
                       key={index}
@@ -596,7 +594,7 @@ function MoodTracker() {
           /> */}
 
         </div>
-      )}
+      )} 
     </div>
   );
 }

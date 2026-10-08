@@ -287,6 +287,141 @@ button.choice-btn:hover, .action-btn:hover, .secondary-btn:hover {
     opacity: 0.9;
 }
 
+/* ==========================================
+   SOS Toolkit Mood Tracker Widget Styles
+   ========================================== */
+.sos-mood-tracker {
+    background: var(--card-bg);
+    border: 2px solid var(--card-border);
+    border-radius: 18px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.sos-mood-tracker h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--heading-color);
+    margin-bottom: 0.2rem;
+}
+
+.sos-mood-tracker p.sub {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    font-family: var(--font-body);
+}
+
+.sos-mood-chart {
+    position: relative;
+    width: min(100%, 280px);
+    max-width: 100%;
+    margin: 0 auto 1rem;
+}
+
+.sos-mood-axis-label {
+    position: absolute;
+    z-index: 1;
+    color: var(--text-color);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.2;
+    pointer-events: none;
+    background: var(--panel-bg);
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.sos-mood-high-energy {
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.sos-mood-low-energy {
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.sos-mood-unpleasant {
+    top: 50%;
+    left: 6px;
+    transform: translateY(-50%);
+}
+
+.sos-mood-pleasant {
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+}
+
+.sos-mood-grid {
+    position: relative;
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 1 / 1;
+    margin: 0;
+    background: var(--panel-bg);
+    border: 2px solid var(--card-border);
+    border-radius: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.sos-mood-quadrant {
+    padding: 10px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--text-color);
+    border: 1px dashed var(--card-border);
+    transition: background 0.2s, transform 0.1s;
+}
+
+.sos-mood-quadrant:hover {
+    background: var(--heading-color);
+    color: var(--card-bg);
+    transform: scale(0.98);
+}
+
+.sos-mood-quadrant span {
+    font-size: 18px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.sos-mood-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.sos-mood-pill {
+    background: var(--btn-bg);
+    border: 2px solid var(--card-border);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sos-mood-pill:hover {
+    background: var(--btn-hover);
+    color: var(--card-bg);
+}
+
 /* --------------------------------------------------------------------------
    5. Browse Section
    -------------------------------------------------------------------------- */
