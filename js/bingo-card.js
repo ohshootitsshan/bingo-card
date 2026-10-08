@@ -25,6 +25,7 @@ const SIMPLE_MARK_COLORS = [
   "#B9765F"  // Mindfulness
 ];
 const STORAGE_KEY = "bingoCardState";
+const BINGO_HISTORY_KEY = "bingoCardHistory";
 
 function shuffle(arr) {
   const a = [...arr];
@@ -66,9 +67,36 @@ function makeCardState() {
   };
 }
 
+function checkBingo(marked) {
+  const lines = [];
+  for (let r = 0; r < 5; r++) lines.push([0,1,2,3,4].map(c => r * 5 + c));
+  for (let c = 0; c < 5; c++) lines.push([0,1,2,3,4].map(r => r * 5 + c));
+  lines.push([0,6,12,18,24]);
+  lines.push([4,8,12,16,20]);
+  return lines.some(line => line.every(i => marked.has(i)));
+}
+
+function recordBingoAchievement(date, achieved) {
+  if (!achieved || typeof date !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
+  try {
+    const history = JSON.parse(localStorage.getItem(BINGO_HISTORY_KEY) || "{}");
+    if (!history || typeof history !== "object" || Array.isArray(history)) {
+      throw new TypeError("Saved bingo history is not in the expected format.");
+    }
+    if (history[date] === true) return;
+    history[date] = true;
+    localStorage.setItem(BINGO_HISTORY_KEY, JSON.stringify(history));
+  } catch (error) {
+    console.error("Could not save bingo achievement history.", error);
+  }
+}
+
 function loadCardState() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (saved && Array.isArray(saved.marked)) {
+      recordBingoAchievement(saved.date, checkBingo(new Set(saved.marked)));
+    }
     if (saved?.date === todayKey() && Array.isArray(saved.grid) && saved.grid.length === 25 &&
         Array.isArray(saved.marked) && Array.isArray(saved.markRotations)) {
       const marked = new Set(saved.marked);
@@ -90,15 +118,6 @@ function loadCardState() {
     }
   } catch {}
   return makeCardState();
-}
-
-function checkBingo(marked) {
-  const lines = [];
-  for (let r = 0; r < 5; r++) lines.push([0,1,2,3,4].map(c => r * 5 + c));
-  for (let c = 0; c < 5; c++) lines.push([0,1,2,3,4].map(r => r * 5 + c));
-  lines.push([0,6,12,18,24]);
-  lines.push([4,8,12,16,20]);
-  return lines.some(line => line.every(i => marked.has(i)));
 }
 
 function BingoCard() {
@@ -126,7 +145,10 @@ function BingoCard() {
         markRotations: [...card.markRotations],
         markColors: [...card.markColors]
       }));
-    } catch {}
+      recordBingoAchievement(card.date, checkBingo(card.marked));
+    } catch (error) {
+      console.error("Could not save bingo card state.", error);
+    }
   }, [card]);
 
   function toggle(i) {
