@@ -76,13 +76,13 @@ const getCurrentWeekRange = (now = new Date()) => {
 };
 
 const NUTRITION_GOALS = [
-  { id: 'movement', name: 'Movement', color: '#7b8569' },
-  { id: 'hydration', name: 'Hydration', color: '#668893' },
-  { id: 'protein', name: 'Protein', color: '#a0787f' },
-  { id: 'fibre', name: 'Fibre', color: '#b69a61' },
-  { id: 'supplements', name: 'Supplements', color: '#85758f' },
-  { id: 'sleep', name: 'Sleep', color: '#737e91' },
-  { id: 'mindfulness', name: 'Mindfulness', color: '#b58170' }
+  { id: 'movement', name: 'Movement', emoji: '🤸🏼‍♀️', color: '#edbc52' },
+  { id: 'hydration', name: 'Hydration', emoji: '💧', color: '#00CECB' },
+  { id: 'protein', name: 'Protein', emoji: '🫘', color: '#FF5E5B' },
+  { id: 'fibre', name: 'Fibre', emoji: '🥬', color: '#b7c938' },
+  { id: 'meds', name: 'Meds', emoji: '💊', color: '#FF9F1C' },
+  { id: 'sleep', name: 'Sleep', emoji: '🛌', color: '#bbbdf6' },
+  { id: 'mindfulness', name: 'Mindfulness', emoji: '🧘', color: '#68b0fc' }
 ];
 
 const formatDateKey = (date) => {
@@ -166,8 +166,16 @@ window.buildWeeklyReportTemplateParams = () => {
     };
   });
 
+  const bestDay = [...daySummaries].sort((first, second) =>
+    second.goalsMet.length - first.goalsMet.length ||
+    Number(second.bingoAchieved) - Number(first.bingoAchieved)
+  )[0];
+  const bestDayName = bestDay.goalsMet.length || bestDay.bingoAchieved
+    ? bestDay.date.toLocaleDateString('en-GB', { weekday: 'long' })
+    : '—';
+
   const dailyBreakdown = daySummaries.map(day =>
-    `<div class="report-day" style="padding:14px 0;border-bottom:1px solid #EAEAEA;"><h3 class="report-day-title" style="margin:0 0 8px;color:#111111;font-size:15px;font-weight:700;">${escapeReportHtml(day.date.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' }))}</h3><ul class="report-day-items" style="margin:0;padding-left:18px;color:#333333;font-size:13px;line-height:1.6;"><li><strong>Meals:</strong> ${escapeReportHtml(day.meals.length ? day.meals.join(', ') : 'None logged')}</li><li><strong>Symptoms:</strong> ${escapeReportHtml(day.symptoms.length ? day.symptoms.join(', ') : 'None logged')}</li><li><strong>Bingo:</strong> ${day.bingoAchieved ? 'Achieved' : 'Not achieved'}</li><li><strong>Nutrition goals:</strong> ${day.goalsMet.length}/${NUTRITION_GOALS.length}${day.goalsMet.length ? ` (${escapeReportHtml(day.goalsMet.join(', '))})` : ''}</li></ul></div>`
+    `<div class="report-day" style="padding:14px 0;border-bottom:1px solid #EAEAEA;"><h3 class="report-day-title" style="margin:0 0 8px;color:#111111;font-size:15px;font-weight:700;">${escapeReportHtml(day.date.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' }))}${bestDayName !== '—' && day.dateKey === bestDay.dateKey ? ' 🏆' : ''}</h3><ul class="report-day-items" style="margin:0;padding-left:18px;color:#333333;font-size:13px;line-height:1.6;"><li><strong>🥗 Meals:</strong> ${escapeReportHtml(day.meals.length ? day.meals.join(', ') : 'None logged')}</li><li><strong>💭 Symptoms:</strong> ${escapeReportHtml(day.symptoms.length ? day.symptoms.join(', ') : 'None logged')}</li><li><strong>⭐ Bingo:</strong> ${day.bingoAchieved ? 'Achieved' : 'Not achieved'}</li><li><strong>📊 Goals:</strong> ${day.goalsMet.length}/${NUTRITION_GOALS.length}${day.goalsMet.length ? ` (${escapeReportHtml(day.goalsMet.join(', '))})` : ''}</li></ul></div>`
   ).join('');
 
   const lastDay = new Date(end);
@@ -182,13 +190,6 @@ window.buildWeeklyReportTemplateParams = () => {
   });
   const completedGoalDays = daySummaries.filter(day => day.goalsMet.length === NUTRITION_GOALS.length).length;
   const totalBingos = weekDates.filter(date => bingoHistory[formatDateKey(date)] === true).length;
-  const bestDay = [...daySummaries].sort((first, second) =>
-    second.goalsMet.length - first.goalsMet.length ||
-    Number(second.bingoAchieved) - Number(first.bingoAchieved)
-  )[0];
-  const bestDayName = bestDay.goalsMet.length || bestDay.bingoAchieved
-    ? bestDay.date.toLocaleDateString('en-GB', { weekday: 'long' })
-    : '—';
   const mealCounts = new Map();
   weeklyLogs.forEach(({ log }) => {
     if (log.type === 'meal' && typeof log.name === 'string' && log.name.trim()) {
@@ -204,38 +205,17 @@ window.buildWeeklyReportTemplateParams = () => {
         .sort((first, second) => first.localeCompare(second))
         .join(', ')
     : 'No meals logged';
-  const center = 130;
-  const outerRadius = 118;
-  const radiusStep = 15;
-  const strokeWidth = 11;
-  const ringTracks = nutritionCounts.map((goal, index) => {
-    const radius = outerRadius - index * radiusStep;
-    const circumference = 2 * Math.PI * radius;
-    const offset = circumference * (1 - goal.daysMet / 7);
-    return `
-      <circle cx="${center}" cy="${center}" r="${radius}" fill="none" stroke="#E8E8E8" stroke-width="${strokeWidth}" />
-      <circle cx="${center}" cy="${center}" r="${radius}" fill="none" stroke="${goal.color}" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-dasharray="${circumference.toFixed(1)}" stroke-dashoffset="${offset.toFixed(1)}" transform="rotate(-90 ${center} ${center})" />`;
+  const nutritionGoalCells = nutritionCounts.map(goal => {
+    const segments = Array.from({ length: 7 }, (_, index) => {
+      const isFilled = index >= 7 - goal.daysMet;
+      const color = isFilled ? goal.color : '#E8E8E8';
+      return `<tr><td width="18" height="9" bgcolor="${color}" style="width:18px;height:9px;background-color:${color};font-size:0;line-height:0;">&nbsp;</td></tr>`;
+    }).join('');
+    return `<td align="center" valign="bottom" width="14%" style="width:14%;padding:8px 2px 12px;"><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;"><tr><td align="center" valign="bottom"><table role="presentation" cellpadding="0" cellspacing="1" border="0" style="border-collapse:separate;">${segments}</table></td></tr><tr><td align="center" valign="top" style="padding:5px 0 0;font-size:14px;line-height:18px;">${goal.emoji}</td></tr><tr><td align="center" valign="top" style="padding:2px 0 0;font-size:10px;line-height:12px;color:#333333;overflow-wrap:anywhere;">${goal.name}</td></tr></table></td>`;
   }).join('');
-  const ringLegend = nutritionCounts.map(goal => `
-    <tr>
-      <td style="padding: 3px 8px 3px 0;"><span style="display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: ${goal.color};"></span></td>
-      <td style="padding: 3px 12px 3px 0; font-size: 12px; color: #333333;">${goal.name}</td>
-      <td style="padding: 3px 0; font-size: 12px; color: #333333; text-align: right;">${goal.daysMet}/7</td>
-    </tr>`).join('');
   const nutritionRing = `
-    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width: 100%; border-collapse: collapse;">
-      <tr>
-        <td align="center" valign="middle" style="padding: 8px; width: 55%;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="220" height="220" viewBox="0 0 260 260" role="img" aria-label="Weekly nutrition goal rings">
-            ${ringTracks}
-          </svg>
-        </td>
-        <td valign="middle" style="padding: 8px; width: 45%;">
-          <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse;">
-            ${ringLegend}
-          </table>
-        </td>
-      </tr>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
+      <tr>${nutritionGoalCells}</tr>
     </table>`;
   return {
     subject: `Weekly Wellness Summary (${weekRange})`,
