@@ -62,16 +62,25 @@
     text-align: center;
   }
   .stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     min-width: 0;
+    min-height: 64px;
     padding: 8px;
+    box-sizing: border-box;
+    text-align: center;
   }
   .stat-box:nth-child(odd) {
     border-right: 1px solid #EAEAEA;
   }
   .stat-box:nth-child(n + 3) {
+    padding-top: 24px;
     border-top: 1px solid #EAEAEA;
   }
   .stat-value {
+    width: 100%;
     font-size: 18px;
     font-weight: 700;
     color: #B7C938;
@@ -147,10 +156,10 @@ EmailJS template variables supplied by js/theme.js:
   {{subject}}         Email subject
   {{week_range}}      Report date range
   {{total_bingos}}    Bingo days achieved
-  {{avg_nutrition}}   Days all nutrition goals were met
+  {{avg_nutrition}}   Days all goals were met
   {{best_day}}        Best day of the week
   {{most_eaten_meal}} Most frequently logged meal
-  {{{nutrition_ring}}} Inline nutrition-ring chart HTML
+  {{{nutrition_ring}}} Email-safe table-based vertical nutrition chart HTML
   {{{daily_breakdown}}} Formatted daily activity HTML
 Use triple braces for nutrition_ring and daily_breakdown so EmailJS renders their HTML.
 -->
@@ -167,25 +176,25 @@ Use triple braces for nutrition_ring and daily_breakdown so EmailJS renders thei
   <div class="summary-banner">
     <div class="stat-box">
       <div class="stat-value" id="total-bingos"></div>
-      <div class="stat-label">Bingos Achieved</div>
+      <div class="stat-label">⭐ Bingos Achieved</div>
     </div>
     <div class="stat-box">
       <div class="stat-value" id="avg-nutrition"></div>
-      <div class="stat-label">Days All Goals Met</div>
+      <div class="stat-label">📊 Days All Goals Met</div>
     </div>
     <div class="stat-box">
       <div class="stat-value" id="best-day"></div>
-      <div class="stat-label">Best Day</div>
+      <div class="stat-label">🏆 Best Day</div>
     </div>
     <div class="stat-box">
       <div class="stat-value" id="most-eaten-meal"></div>
-      <div class="stat-label">Most Eaten Meal</div>
+      <div class="stat-label">🥗 Most Eaten Meal</div>
     </div>
   </div>
 
   <div class="day-section">
-    <div class="day-title">Goal Rings</div>
-    <!-- EmailJS template variable: {{{nutrition_ring}}} -->
+    <div class="day-title">📊 Goal Progress</div>
+    <!-- Copy this section to the EmailJS template; keep triple braces to render its table HTML. -->
     <div id="nutrition-ring"></div>
   </div>
 
